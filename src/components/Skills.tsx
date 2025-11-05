@@ -1,34 +1,49 @@
 import { motion } from "framer-motion";
-import { Code2, Database, GitBranch, Server, Smartphone, Globe, FileCode, Blocks, Boxes, Package, Cloud, Layout } from "lucide-react";
+import { Code2, Database, GitBranch, Server, Smartphone, Globe } from "lucide-react";
 import { Card } from "@/components/ui/card";
+
+// Import technology logos
+import pythonLogo from "@/assets/skills/python.svg";
+import phpLogo from "@/assets/skills/php.svg";
+import jsLogo from "@/assets/skills/javascript.svg";
+import tsLogo from "@/assets/skills/typescript.svg";
+import laravelLogo from "@/assets/skills/laravel.svg";
+import vueLogo from "@/assets/skills/vue.svg";
+import reactLogo from "@/assets/skills/react.svg";
+import nextLogo from "@/assets/skills/nextjs.svg";
+import nuxtLogo from "@/assets/skills/nuxt.svg";
+import mysqlLogo from "@/assets/skills/mysql.svg";
+import gitLogo from "@/assets/skills/git.svg";
+import composerLogo from "@/assets/skills/composer.svg";
+import npmLogo from "@/assets/skills/npm.svg";
 
 const skills = [
   {
     category: "Languages",
     icon: Code2,
     items: [
-      { name: "Python", icon: FileCode },
-      { name: "PHP", icon: FileCode },
-      { name: "JavaScript", icon: Code2 },
-      { name: "TypeScript", icon: Code2 }
+      { name: "Python", logo: pythonLogo },
+      { name: "PHP", logo: phpLogo },
+      { name: "JavaScript", logo: jsLogo },
+      { name: "TypeScript", logo: tsLogo }
     ],
   },
   {
     category: "Frameworks",
-    icon: Blocks,
+    icon: Globe,
     items: [
-      { name: "Laravel", icon: Server },
-      { name: "Vue.js", icon: Globe },
-      { name: "React.js", icon: Globe },
-      { name: "Next.js", icon: Layout },
-      { name: "Nuxt.js", icon: Layout }
+      { name: "Laravel", logo: laravelLogo },
+      { name: "Vue.js", logo: vueLogo },
+      { name: "React.js", logo: reactLogo },
+      { name: "Next.js", logo: nextLogo },
+      { name: "Nuxt.js", logo: nuxtLogo }
     ],
   },
   {
     category: "Database",
     icon: Database,
     items: [
-      { name: "MySQL", icon: Database },
+      { name: "MySQL", logo: mysqlLogo },
       { name: "Database Optimization", icon: Database },
       { name: "Query Performance", icon: Database }
     ],
@@ -37,19 +52,19 @@ const skills = [
     category: "Tools",
     icon: GitBranch,
     items: [
-      { name: "Git", icon: GitBranch },
-      { name: "Composer", icon: Package },
-      { name: "NPM", icon: Package },
-      { name: "Agile", icon: Boxes }
+      { name: "Git", logo: gitLogo },
+      { name: "Composer", logo: composerLogo },
+      { name: "NPM", logo: npmLogo },
+      { name: "Agile", icon: GitBranch }
     ],
   },
   {
     category: "Backend",
     icon: Server,
     items: [
-      { name: "RESTful APIs", icon: Cloud },
+      { name: "RESTful APIs", icon: Server },
       { name: "API Development", icon: Server },
-      { name: "Laravel", icon: Server }
+      { name: "Laravel", logo: laravelLogo }
     ],
   },
   {
@@ -57,7 +72,7 @@ const skills = [
     icon: Smartphone,
     items: [
       { name: "Responsive Design", icon: Smartphone },
-      { name: "Modern UI/UX", icon: Layout },
+      { name: "Modern UI/UX", icon: Smartphone },
       { name: "SPA Development", icon: Globe }
     ],
   },
@@ -103,22 +118,27 @@ const Skills = () => {
                   </h3>
                 </div>
                 <ul className="space-y-3">
-                  {skill.items.map((item) => {
-                    const ItemIcon = item.icon;
-                    return (
-                      <li
-                        key={item.name}
-                        className="text-muted-foreground flex items-center gap-3 group/item"
-                      >
-                        <div className="p-1.5 rounded bg-primary/10 group-hover/item:bg-primary/20 transition-colors">
-                          <ItemIcon className="w-4 h-4 text-primary" />
-                        </div>
-                        <span className="group-hover/item:text-foreground transition-colors">
-                          {item.name}
-                        </span>
-                      </li>
-                    );
-                  })}
+                  {skill.items.map((item) => (
+                    <li
+                      key={item.name}
+                      className="text-muted-foreground flex items-center gap-3 group/item"
+                    >
+                      <div className="p-1.5 rounded bg-card-foreground/5 group-hover/item:bg-primary/10 transition-colors">
+                        {item.logo ? (
+                          <img 
+                            src={item.logo} 
+                            alt={item.name}
+                            className="w-5 h-5 object-contain"
+                          />
+                        ) : (
+                          <item.icon className="w-5 h-5 text-primary" />
+                        )}
+                      </div>
+                      <span className="group-hover/item:text-foreground transition-colors">
+                        {item.name}
+                      </span>
+                    </li>
+                  ))}
                 </ul>
               </Card>
             </motion.div>
