@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
   return (
@@ -14,11 +15,19 @@ const Hero = () => {
         className="relative z-10 text-center max-w-4xl mx-auto"
       >
         <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
+          initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="mb-6"
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="mb-8"
         >
+          <div className="relative w-40 h-40 mx-auto mb-6">
+            <div className="absolute inset-0 bg-gradient-primary rounded-full opacity-20 blur-2xl" />
+            <img
+              src={profileImage}
+              alt="Dagem Gissila"
+              className="relative rounded-full w-full h-full object-cover border-4 border-primary/20 shadow-glow"
+            />
+          </div>
           <h2 className="text-lg md:text-xl text-muted-foreground mb-2">Hi, I'm</h2>
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
             <span className="bg-gradient-primary bg-clip-text text-transparent">

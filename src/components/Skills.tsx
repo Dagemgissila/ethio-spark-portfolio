@@ -1,37 +1,65 @@
 import { motion } from "framer-motion";
-import { Code2, Database, GitBranch, Server, Smartphone, Globe } from "lucide-react";
+import { Code2, Database, GitBranch, Server, Smartphone, Globe, FileCode, Blocks, Boxes, Package, Cloud, Layout } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const skills = [
   {
     category: "Languages",
     icon: Code2,
-    items: ["Python", "PHP", "JavaScript", "TypeScript"],
+    items: [
+      { name: "Python", icon: FileCode },
+      { name: "PHP", icon: FileCode },
+      { name: "JavaScript", icon: Code2 },
+      { name: "TypeScript", icon: Code2 }
+    ],
   },
   {
     category: "Frameworks",
-    icon: Globe,
-    items: ["Laravel", "Vue.js", "React.js", "Next.js", "Nuxt.js"],
+    icon: Blocks,
+    items: [
+      { name: "Laravel", icon: Server },
+      { name: "Vue.js", icon: Globe },
+      { name: "React.js", icon: Globe },
+      { name: "Next.js", icon: Layout },
+      { name: "Nuxt.js", icon: Layout }
+    ],
   },
   {
     category: "Database",
     icon: Database,
-    items: ["MySQL", "Database Optimization", "Query Performance"],
+    items: [
+      { name: "MySQL", icon: Database },
+      { name: "Database Optimization", icon: Database },
+      { name: "Query Performance", icon: Database }
+    ],
   },
   {
     category: "Tools",
     icon: GitBranch,
-    items: ["Git", "Composer", "NPM", "Agile"],
+    items: [
+      { name: "Git", icon: GitBranch },
+      { name: "Composer", icon: Package },
+      { name: "NPM", icon: Package },
+      { name: "Agile", icon: Boxes }
+    ],
   },
   {
     category: "Backend",
     icon: Server,
-    items: ["RESTful APIs", "API Development", "Laravel"],
+    items: [
+      { name: "RESTful APIs", icon: Cloud },
+      { name: "API Development", icon: Server },
+      { name: "Laravel", icon: Server }
+    ],
   },
   {
     category: "Frontend",
     icon: Smartphone,
-    items: ["Responsive Design", "Modern UI/UX", "SPA Development"],
+    items: [
+      { name: "Responsive Design", icon: Smartphone },
+      { name: "Modern UI/UX", icon: Layout },
+      { name: "SPA Development", icon: Globe }
+    ],
   },
 ];
 
@@ -74,16 +102,23 @@ const Skills = () => {
                     {skill.category}
                   </h3>
                 </div>
-                <ul className="space-y-2">
-                  {skill.items.map((item) => (
-                    <li
-                      key={item}
-                      className="text-muted-foreground flex items-center gap-2"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      {item}
-                    </li>
-                  ))}
+                <ul className="space-y-3">
+                  {skill.items.map((item) => {
+                    const ItemIcon = item.icon;
+                    return (
+                      <li
+                        key={item.name}
+                        className="text-muted-foreground flex items-center gap-3 group/item"
+                      >
+                        <div className="p-1.5 rounded bg-primary/10 group-hover/item:bg-primary/20 transition-colors">
+                          <ItemIcon className="w-4 h-4 text-primary" />
+                        </div>
+                        <span className="group-hover/item:text-foreground transition-colors">
+                          {item.name}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </Card>
             </motion.div>

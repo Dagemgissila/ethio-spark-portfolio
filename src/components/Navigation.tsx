@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "#" },
@@ -44,8 +45,8 @@ const Navigation = () => {
             </span>
           </motion.div>
 
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+          <div className="hidden md:flex md:items-center md:gap-4">
+            <div className="flex items-baseline space-x-4">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.name}
@@ -60,9 +61,11 @@ const Navigation = () => {
                 </motion.a>
               ))}
             </div>
+            <ThemeToggle />
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-muted-foreground hover:text-primary"
