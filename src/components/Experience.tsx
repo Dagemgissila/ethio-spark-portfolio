@@ -38,8 +38,8 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section className="py-20 px-4 bg-card/30" id="experience">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-20 px-4" id="experience">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,47 +49,68 @@ const Experience = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Work Experience
+              My Professional Journey
             </span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            My professional journey
+            Building innovative solutions across diverse projects
           </p>
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 -translate-x-1/2" />
+          {/* Vertical timeline line */}
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent" />
 
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative mb-12 ${
-                index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8 md:ml-auto"
-              } md:w-1/2`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`relative mb-16 ${
+                index % 2 === 0 ? "md:pr-[50%] md:text-right" : "md:pl-[50%] md:text-left"
+              }`}
             >
-              <div className="absolute left-0 md:left-auto md:right-[-1.75rem] top-0 w-3 h-3 rounded-full bg-primary ring-4 ring-background md:translate-x-0 md:group-even:left-[-1.75rem]" />
+              {/* Timeline dot */}
+              <div className={`absolute top-6 w-4 h-4 rounded-full bg-primary ring-4 ring-background left-[1.875rem] md:left-1/2 md:-translate-x-1/2 ${
+                index % 2 === 0 ? "md:left-[calc(50%-0.5rem)]" : "md:left-[calc(50%+0.5rem)]"
+              }`}>
+                <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-75" />
+              </div>
               
-              <div className="ml-8 md:ml-0 p-6 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow">
-                <div className="flex items-center gap-2 mb-2">
-                  <Briefcase className="h-5 w-5 text-primary" />
-                  <span className="text-sm text-primary font-medium">
-                    {exp.period}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-1">
-                  {exp.title}
-                </h3>
-                <p className="text-primary font-medium mb-1">{exp.company}</p>
-                <p className="text-sm text-muted-foreground mb-3">
-                  {exp.location}
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  {exp.description}
-                </p>
+              <div className={`ml-16 md:ml-0 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-300 group"
+                >
+                  <div className={`flex items-center gap-2 mb-3 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>
+                    <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <Briefcase className="h-5 w-5 text-primary" />
+                    </div>
+                    <span className="text-sm text-primary font-semibold px-3 py-1 rounded-full bg-primary/10">
+                      {exp.period}
+                    </span>
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {exp.title}
+                  </h3>
+                  
+                  <p className="text-lg font-semibold text-primary mb-1">
+                    {exp.company}
+                  </p>
+                  
+                  <p className="text-sm text-muted-foreground mb-4 flex items-center gap-1 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}">
+                    <span className="w-1 h-1 rounded-full bg-muted-foreground" />
+                    {exp.location}
+                  </p>
+                  
+                  <p className="text-muted-foreground leading-relaxed">
+                    {exp.description}
+                  </p>
+                </motion.div>
               </div>
             </motion.div>
           ))}
