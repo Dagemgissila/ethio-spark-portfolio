@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile.jpg";
-import reactLogo from "@/assets/skills/react.svg";
-import vueLogo from "@/assets/skills/vue.svg";
 import nextLogo from "@/assets/skills/nextjs.svg";
 import laravelLogo from "@/assets/skills/laravel.svg";
 import expressLogo from "@/assets/skills/express.svg";
@@ -11,9 +9,9 @@ import typescriptLogo from "@/assets/skills/typescript.svg";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+      <div className="max-w-7xl mx-auto relative z-10 w-full">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left side - Text content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -119,9 +117,9 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center mt-12 md:mt-0"
           >
-            <div className="relative w-full max-w-md mx-auto">
+            <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] mx-auto">
               {/* Animated gradient background */}
               <motion.div 
                 className="absolute inset-0 bg-gradient-primary rounded-full blur-3xl opacity-30"
@@ -137,89 +135,73 @@ const Hero = () => {
               />
               
               {/* Main profile image */}
-              <div className="relative z-10">
+              <div className="relative z-10 w-full h-full">
                 <img 
                   src={profileImage} 
                   alt="Dagem Gissila - Full Stack Developer"
-                  className="relative w-full h-auto rounded-full object-cover border-4 border-primary/50 shadow-2xl backdrop-blur-sm"
-                  style={{ aspectRatio: '1/1' }}
+                  className="w-full h-full rounded-full object-cover border-4 border-primary/50 shadow-2xl"
                 />
               </div>
 
-              {/* Floating tech stack logos around image */}
-              {/* React - Top */}
+              {/* Floating tech stack logos around image - Only 4 logos */}
+              {/* Next.js - Top */}
               <motion.div
-                className="absolute -top-8 left-1/2 -translate-x-1/2 w-20 h-20 rounded-2xl bg-card/80 backdrop-blur-md border-2 border-primary/30 flex items-center justify-center shadow-lg"
+                className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/90 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/20"
                 animate={{ 
-                  y: [0, -15, 0],
-                  rotate: [0, 5, 0, -5, 0]
+                  y: [0, -12, 0],
+                  rotate: [0, 360]
                 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ 
+                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                }}
               >
-                <img src={reactLogo} alt="React" className="w-12 h-12" />
+                <img src={nextLogo} alt="Next.js" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 dark:invert" />
               </motion.div>
 
-              {/* Next.js - Top Right */}
+              {/* TypeScript - Right */}
               <motion.div
-                className="absolute top-8 -right-12 w-24 h-24 rounded-2xl bg-card/80 backdrop-blur-md border-2 border-primary/30 flex items-center justify-center shadow-lg"
+                className="absolute top-1/2 -right-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/90 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/20"
                 animate={{ 
-                  x: [0, 15, 0],
-                  y: [0, -10, 0],
-                  rotate: [0, -5, 0, 5, 0]
+                  x: [0, 12, 0],
+                  rotate: [0, 360]
                 }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                transition={{ 
+                  x: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                }}
               >
-                <img src={nextLogo} alt="Next.js" className="w-14 h-14 dark:invert" />
+                <img src={typescriptLogo} alt="TypeScript" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
               </motion.div>
 
-              {/* Laravel - Right */}
+              {/* Laravel - Bottom */}
               <motion.div
-                className="absolute top-1/2 -right-16 -translate-y-1/2 w-20 h-20 rounded-2xl bg-card/80 backdrop-blur-md border-2 border-primary/30 flex items-center justify-center shadow-lg"
-                animate={{ 
-                  x: [0, 20, 0],
-                  rotate: [0, 10, 0, -10, 0]
-                }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              >
-                <img src={laravelLogo} alt="Laravel" className="w-12 h-12" />
-              </motion.div>
-
-              {/* Express.js - Bottom Right */}
-              <motion.div
-                className="absolute bottom-12 -right-8 w-22 h-22 rounded-2xl bg-card/80 backdrop-blur-md border-2 border-primary/30 flex items-center justify-center shadow-lg"
-                animate={{ 
-                  y: [0, 15, 0],
-                  x: [0, 10, 0],
-                  rotate: [0, -8, 0, 8, 0]
-                }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-              >
-                <img src={expressLogo} alt="Express.js" className="w-12 h-12 dark:invert" />
-              </motion.div>
-
-              {/* Vue.js - Bottom Left */}
-              <motion.div
-                className="absolute bottom-8 -left-12 w-24 h-24 rounded-2xl bg-card/80 backdrop-blur-md border-2 border-primary/30 flex items-center justify-center shadow-lg"
+                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/90 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/20"
                 animate={{ 
                   y: [0, 12, 0],
-                  x: [0, -10, 0],
-                  rotate: [0, 6, 0, -6, 0]
+                  rotate: [0, 360]
                 }}
-                transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                transition={{ 
+                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                }}
               >
-                <img src={vueLogo} alt="Vue.js" className="w-14 h-14" />
+                <img src={laravelLogo} alt="Laravel" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
               </motion.div>
 
-              {/* TypeScript - Left */}
+              {/* Express.js - Left */}
               <motion.div
-                className="absolute top-1/2 -left-14 -translate-y-1/2 w-20 h-20 rounded-2xl bg-card/80 backdrop-blur-md border-2 border-primary/30 flex items-center justify-center shadow-lg"
+                className="absolute top-1/2 -left-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/90 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/20"
                 animate={{ 
-                  x: [0, -15, 0],
-                  rotate: [0, -10, 0, 10, 0]
+                  x: [0, -12, 0],
+                  rotate: [0, 360]
                 }}
-                transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+                transition={{ 
+                  x: { duration: 3.2, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                }}
               >
-                <img src={typescriptLogo} alt="TypeScript" className="w-12 h-12" />
+                <img src={expressLogo} alt="Express.js" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 dark:invert" />
               </motion.div>
             </div>
           </motion.div>
