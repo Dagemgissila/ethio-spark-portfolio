@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
+    id: "stock-management",
     title: "Stock Management System",
     description:
       "A comprehensive inventory management solution built with Laravel and Vue.js featuring real-time tracking, automated alerts, and detailed analytics.",
@@ -12,6 +14,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
   },
   {
+    id: "lottery-system",
     title: "Lottery System",
     description:
       "An advanced lottery platform with secure random number generation, user management, and automated prize distribution system.",
@@ -19,6 +22,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&h=500&fit=crop",
   },
   {
+    id: "wild-crime-database",
     title: "Wild Crime Database System",
     description:
       "Government project for tracking and managing wildlife crime data with advanced security features and comprehensive reporting.",
@@ -87,14 +91,16 @@ const Projects = () => {
                   </div>
 
                   <div className="flex gap-3">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="flex-1 border-primary text-primary hover:bg-primary/10"
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Live Demo
-                    </Button>
+                    <Link to={`/project/${project.id}`} className="flex-1">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="w-full border-primary text-primary hover:bg-primary/10"
+                      >
+                        View Details
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
                     <Button
                       size="sm"
                       variant="outline"
