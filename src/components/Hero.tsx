@@ -148,12 +148,10 @@ const Hero = () => {
               <motion.div
                 className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
                 animate={{ 
-                  y: [0, -12, 0],
-                  rotate: [0, 360]
+                  y: [0, -12, 0]
                 }}
                 transition={{ 
-                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                 }}
               >
                 <img src={nextLogo} alt="Next.js" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 dark:invert" />
@@ -163,12 +161,10 @@ const Hero = () => {
               <motion.div
                 className="absolute top-1/2 -right-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
                 animate={{ 
-                  x: [0, 12, 0],
-                  rotate: [0, 360]
+                  x: [0, 12, 0]
                 }}
                 transition={{ 
-                  x: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                  x: { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
                 }}
               >
                 <img src={typescriptLogo} alt="TypeScript" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
@@ -178,12 +174,10 @@ const Hero = () => {
               <motion.div
                 className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
                 animate={{ 
-                  y: [0, 12, 0],
-                  rotate: [0, 360]
+                  y: [0, 12, 0]
                 }}
                 transition={{ 
-                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                 }}
               >
                 <img src={laravelLogo} alt="Laravel" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
@@ -193,12 +187,10 @@ const Hero = () => {
               <motion.div
                 className="absolute top-1/2 -left-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
                 animate={{ 
-                  x: [0, -12, 0],
-                  rotate: [0, 360]
+                  x: [0, -12, 0]
                 }}
                 transition={{ 
-                  x: { duration: 3.2, repeat: Infinity, ease: "easeInOut" },
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                  x: { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
                 }}
               >
                 <img src={expressLogo} alt="Express.js" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 dark:invert" />

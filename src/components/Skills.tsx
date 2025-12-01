@@ -93,7 +93,7 @@ const Skills = () => {
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="flex flex-col items-center gap-3 p-4 rounded-lg bg-card border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-300 group cursor-pointer"
                 >
-                  <div className="w-16 h-16 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-background/50 p-2 group-hover:scale-110 transition-transform duration-300">
                     <img 
                       src={tech.logo} 
                       alt={tech.name}
