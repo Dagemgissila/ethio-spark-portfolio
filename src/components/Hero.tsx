@@ -139,14 +139,14 @@ const Hero = () => {
                 <img 
                   src={profileImage} 
                   alt="Dagem Gissila - Full Stack Developer"
-                  className="w-full h-full rounded-full object-cover border-4 border-primary/50 shadow-2xl"
+                  className="w-full h-full rounded-full object-cover shadow-2xl"
                 />
               </div>
 
-              {/* Floating tech stack logos around image - Only 4 logos */}
+              {/* Floating tech stack logos around image - Only 4 logos with z-20 to be in front */}
               {/* Next.js - Top */}
               <motion.div
-                className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/90 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/20"
+                className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
                 animate={{ 
                   y: [0, -12, 0],
                   rotate: [0, 360]
@@ -161,7 +161,7 @@ const Hero = () => {
 
               {/* TypeScript - Right */}
               <motion.div
-                className="absolute top-1/2 -right-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/90 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/20"
+                className="absolute top-1/2 -right-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
                 animate={{ 
                   x: [0, 12, 0],
                   rotate: [0, 360]
@@ -176,7 +176,7 @@ const Hero = () => {
 
               {/* Laravel - Bottom */}
               <motion.div
-                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/90 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/20"
+                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
                 animate={{ 
                   y: [0, 12, 0],
                   rotate: [0, 360]
@@ -191,7 +191,7 @@ const Hero = () => {
 
               {/* Express.js - Left */}
               <motion.div
-                className="absolute top-1/2 -left-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/90 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/20"
+                className="absolute top-1/2 -left-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
                 animate={{ 
                   x: [0, -12, 0],
                   rotate: [0, 360]
