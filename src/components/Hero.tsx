@@ -1,13 +1,25 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, Download, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 import profileImage from "@/assets/profile.jpg";
 import nextLogo from "@/assets/skills/nextjs.svg";
 import laravelLogo from "@/assets/skills/laravel.svg";
 import expressLogo from "@/assets/skills/express.svg";
 import typescriptLogo from "@/assets/skills/typescript.svg";
 
+const technologies = ["Express.js", "Next.js", "Laravel", "React.js", "Nest.js"];
+
 const Hero = () => {
+  const [currentTech, setCurrentTech] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTech((prev) => (prev + 1) % technologies.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
       <div className="max-w-7xl mx-auto relative z-10 w-full">
@@ -48,15 +60,26 @@ const Hero = () => {
               Full Stack Developer
             </motion.p>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed"
+              className="text-lg text-muted-foreground mb-8 flex items-center gap-2"
             >
-              Specialized in building modern web applications with React, Next.js, Vue.js,
-              Laravel, and TypeScript. Passionate about creating elegant solutions.
-            </motion.p>
+              <span>I build with</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentTech}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-primary font-bold text-xl"
+                >
+                  {technologies[currentTech]}
+                </motion.span>
+              </AnimatePresence>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
