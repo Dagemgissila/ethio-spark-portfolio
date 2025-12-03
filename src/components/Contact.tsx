@@ -17,8 +17,9 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-foreground">Get In</span>{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Get In Touch
+              Touch
             </span>
           </h2>
           <p className="text-muted-foreground text-lg">

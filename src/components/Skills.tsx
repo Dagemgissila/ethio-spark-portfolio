@@ -49,8 +49,9 @@ const Skills = () => {
           className="text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            <span className="text-accent">About</span>{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              About Me
+              Me
             </span>
           </h2>
           <div className="max-w-4xl mx-auto space-y-6 text-muted-foreground leading-relaxed">
@@ -83,7 +84,8 @@ const Skills = () => {
           className="text-center mb-8 px-4"
         >
           <h3 className="text-2xl md:text-3xl font-bold mb-2">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
+            <span className="text-foreground">My</span>{" "}
+            <span className="text-primary">
               Tech Stack
             </span>
           </h3>

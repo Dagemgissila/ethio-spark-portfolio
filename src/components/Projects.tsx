@@ -44,7 +44,10 @@ const Projects = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Featured Projects
+              Featured
+            </span>{" "}
+            <span className="text-accent">
+              Projects
             </span>
           </h2>
           <p className="text-muted-foreground text-lg">

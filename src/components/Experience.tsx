@@ -69,8 +69,9 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Professional Journey
+            <span className="text-foreground">Professional</span>{" "}
+            <span className="text-primary">
+              Journey
             </span>
           </h2>
           <p className="text-muted-foreground text-lg">
