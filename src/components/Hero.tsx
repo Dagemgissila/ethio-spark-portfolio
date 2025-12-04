@@ -21,7 +21,50 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-primary/30 via-transparent to-transparent rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 50, 0],
+            y: [0, 50, 100, 0],
+            scale: [1, 1.2, 1.1, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-accent/20 via-transparent to-transparent rounded-full blur-3xl"
+          animate={{
+            x: [0, -100, -50, 0],
+            y: [0, -50, -100, 0],
+            scale: [1, 1.1, 1.2, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl"
+          animate={{
+            x: [0, 50, -30, 0],
+            y: [0, -30, 50, 0],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left side - Text content */}
@@ -166,7 +209,7 @@ const Hero = () => {
                 />
               </div>
 
-              {/* Floating tech stack logos around image - Only 4 logos with z-20 to be in front */}
+              {/* Floating tech stack logos around image */}
               {/* Next.js - Top */}
               <motion.div
                 className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"

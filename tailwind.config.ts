@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         sans: ['Outfit', 'sans-serif'],
         mono: ['Fira Code', 'monospace'],
+        display: ['Playfair Display', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
