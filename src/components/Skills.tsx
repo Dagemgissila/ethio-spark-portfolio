@@ -43,6 +43,16 @@ const skillCategories = [
     skills: [
       { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
       { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
+    ],
+  },
+  {
+    title: "Libraries & State",
+    icon: Code2,
+    color: "from-rose-500 to-red-400",
+    skills: [
+      { name: "Redux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
+      { name: "TanStack Query", icon: "https://raw.githubusercontent.com/TanStack/query/main/media/emblem-light.svg" },
     ],
   },
 ];
@@ -62,6 +72,9 @@ const allSkills = [
   { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
   { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
   { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+  { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
+  { name: "Redux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
+  { name: "TanStack", icon: "https://raw.githubusercontent.com/TanStack/query/main/media/emblem-light.svg" },
 ];
 
 const duplicatedSkills = [...allSkills, ...allSkills];
@@ -92,16 +105,21 @@ const Skills = () => {
             </span>
           </h2>
           <div className="max-w-4xl mx-auto space-y-6 text-muted-foreground leading-relaxed">
-            <p className="text-xl md:text-2xl font-light">
-              A passionate <span className="text-primary font-semibold">Full-Stack Developer</span> crafting modern, 
-              scalable web applications that make an impact.
+            <p className="text-xl md:text-2xl font-light italic">
+              "Transforming complex problems into <span className="text-primary font-semibold not-italic">elegant digital solutions</span>"
+            </p>
+            <p className="text-base md:text-lg opacity-90">
+              I'm a <span className="text-primary font-semibold">Full-Stack Developer</span> with a passion for building 
+              high-performance web applications. From crafting pixel-perfect UIs with <span className="text-accent font-medium">React</span> and 
+              <span className="text-accent font-medium"> Vue.js</span> to architecting robust backends with 
+              <span className="text-accent font-medium"> Express.js</span>, <span className="text-accent font-medium">Nest.js</span>, and 
+              <span className="text-accent font-medium"> Laravel</span>.
             </p>
             <p className="text-base md:text-lg opacity-80">
-              With expertise spanning frontend frameworks like React and Vue.js to backend powerhouses like 
-              Laravel and Node.js, I bridge the gap between beautiful interfaces and robust architectures. 
-              Every line of code I write is focused on <span className="text-accent font-medium">performance</span>, 
-              <span className="text-accent font-medium"> maintainability</span>, and 
-              <span className="text-accent font-medium"> user experience</span>.
+              I leverage modern tools like <span className="font-medium text-foreground/80">Redis</span> for caching, 
+              <span className="font-medium text-foreground/80"> Redux</span> and <span className="font-medium text-foreground/80">TanStack Query</span> for 
+              state management, and <span className="font-medium text-foreground/80">Docker</span> for containerization to deliver 
+              scalable, maintainable solutions that exceed expectations.
             </p>
           </div>
         </motion.div>
@@ -127,7 +145,7 @@ const Skills = () => {
         </motion.div>
 
         {/* Category Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}

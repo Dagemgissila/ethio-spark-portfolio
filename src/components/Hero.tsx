@@ -8,7 +8,7 @@ import laravelLogo from "@/assets/skills/laravel.svg";
 import expressLogo from "@/assets/skills/express.svg";
 import typescriptLogo from "@/assets/skills/typescript.svg";
 
-const technologies = ["Express.js", "Next.js", "Laravel", "React.js", "Nest.js"];
+const technologies = ["Express.js", "Nest.js", "Laravel", "Next.js", "React.js"];
 
 const Hero = () => {
   const [currentTech, setCurrentTech] = useState(0);
@@ -22,47 +22,75 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
-      {/* Animated gradient background */}
+      {/* Amazing animated gradient mesh background */}
       <div className="absolute inset-0 overflow-hidden">
+        {/* Main gradient orbs */}
         <motion.div
-          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-primary/30 via-transparent to-transparent rounded-full blur-3xl"
+          className="absolute -top-1/3 -left-1/3 w-[800px] h-[800px] bg-gradient-to-br from-primary/40 via-primary/20 to-transparent rounded-full blur-[100px]"
           animate={{
-            x: [0, 100, 50, 0],
-            y: [0, 50, 100, 0],
-            scale: [1, 1.2, 1.1, 1],
+            x: [0, 150, 80, 0],
+            y: [0, 80, 150, 0],
+            scale: [1, 1.3, 1.1, 1],
           }}
           transition={{
-            duration: 20,
+            duration: 15,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         />
         <motion.div
-          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-accent/20 via-transparent to-transparent rounded-full blur-3xl"
+          className="absolute -bottom-1/3 -right-1/3 w-[700px] h-[700px] bg-gradient-to-tl from-accent/30 via-accent/15 to-transparent rounded-full blur-[100px]"
           animate={{
-            x: [0, -100, -50, 0],
-            y: [0, -50, -100, 0],
-            scale: [1, 1.1, 1.2, 1],
+            x: [0, -120, -60, 0],
+            y: [0, -60, -120, 0],
+            scale: [1, 1.2, 1.3, 1],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute top-1/3 right-1/3 w-[500px] h-[500px] bg-gradient-to-br from-primary/25 via-accent/20 to-primary/10 rounded-full blur-[80px]"
+          animate={{
+            x: [0, 80, -50, 0],
+            y: [0, -50, 80, 0],
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: 25,
             repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+        {/* Additional floating particles */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/30 rounded-full blur-2xl"
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
             ease: "easeInOut",
           }}
         />
         <motion.div
-          className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl"
+          className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-accent/40 rounded-full blur-xl"
           animate={{
-            x: [0, 50, -30, 0],
-            y: [0, -30, 50, 0],
-            rotate: [0, 180, 360],
+            scale: [1, 1.8, 1],
+            opacity: [0.4, 0.7, 0.4],
           }}
           transition={{
-            duration: 30,
+            duration: 5,
             repeat: Infinity,
-            ease: "linear",
+            ease: "easeInOut",
           }}
         />
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10 w-full">
@@ -98,26 +126,35 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-2xl md:text-4xl text-foreground font-bold mb-4"
+              className="text-2xl md:text-4xl text-foreground font-bold mb-2"
             >
               Full Stack Developer
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-base md:text-lg text-muted-foreground mb-4"
+            >
+              Specialized in building scalable web applications
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg text-muted-foreground mb-8 flex items-center gap-2"
+              className="text-lg text-muted-foreground mb-8 flex items-center gap-2 flex-wrap"
             >
-              <span>I build with</span>
+              <span>I craft solutions with</span>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentTech}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-primary font-bold text-xl"
+                  initial={{ y: 20, opacity: 0, scale: 0.8 }}
+                  animate={{ y: 0, opacity: 1, scale: 1 }}
+                  exit={{ y: -20, opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="text-primary font-bold text-xl md:text-2xl bg-primary/10 px-3 py-1 rounded-lg"
                 >
                   {technologies[currentTech]}
                 </motion.span>
