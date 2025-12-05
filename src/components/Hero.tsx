@@ -22,11 +22,11 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
-      {/* Amazing animated gradient mesh background */}
+      {/* Subtle animated gradient mesh background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Main gradient orbs */}
+        {/* Soft gradient orbs - very subtle */}
         <motion.div
-          className="absolute -top-1/3 -left-1/3 w-[800px] h-[800px] bg-gradient-to-br from-primary/40 via-primary/20 to-transparent rounded-full blur-[100px]"
+          className="absolute -top-1/3 -left-1/3 w-[800px] h-[800px] bg-gradient-to-br from-muted/40 via-muted/20 to-transparent rounded-full blur-[120px]"
           animate={{
             x: [0, 150, 80, 0],
             y: [0, 80, 150, 0],
@@ -39,7 +39,7 @@ const Hero = () => {
           }}
         />
         <motion.div
-          className="absolute -bottom-1/3 -right-1/3 w-[700px] h-[700px] bg-gradient-to-tl from-accent/30 via-accent/15 to-transparent rounded-full blur-[100px]"
+          className="absolute -bottom-1/3 -right-1/3 w-[700px] h-[700px] bg-gradient-to-tl from-muted/30 via-muted/15 to-transparent rounded-full blur-[120px]"
           animate={{
             x: [0, -120, -60, 0],
             y: [0, -60, -120, 0],
@@ -52,7 +52,7 @@ const Hero = () => {
           }}
         />
         <motion.div
-          className="absolute top-1/3 right-1/3 w-[500px] h-[500px] bg-gradient-to-br from-primary/25 via-accent/20 to-primary/10 rounded-full blur-[80px]"
+          className="absolute top-1/3 right-1/3 w-[500px] h-[500px] bg-gradient-to-br from-muted/20 via-muted/15 to-transparent rounded-full blur-[100px]"
           animate={{
             x: [0, 80, -50, 0],
             y: [0, -50, 80, 0],
@@ -64,12 +64,12 @@ const Hero = () => {
             ease: "linear",
           }}
         />
-        {/* Additional floating particles */}
+        {/* Additional floating particles - very subtle */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/30 rounded-full blur-2xl"
+          className="absolute top-1/4 left-1/4 w-32 h-32 bg-muted/20 rounded-full blur-2xl"
           animate={{
             scale: [1, 1.5, 1],
-            opacity: [0.3, 0.6, 0.3],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
             duration: 4,
@@ -78,10 +78,10 @@ const Hero = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-accent/40 rounded-full blur-xl"
+          className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-muted/25 rounded-full blur-xl"
           animate={{
             scale: [1, 1.8, 1],
-            opacity: [0.4, 0.7, 0.4],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
             duration: 5,

@@ -46,15 +46,6 @@ const skillCategories = [
       { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
     ],
   },
-  {
-    title: "Libraries & State",
-    icon: Code2,
-    color: "from-rose-500 to-red-400",
-    skills: [
-      { name: "Redux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
-      { name: "TanStack Query", icon: "https://raw.githubusercontent.com/TanStack/query/main/media/emblem-light.svg" },
-    ],
-  },
 ];
 
 // All skills for horizontal scroll
@@ -145,7 +136,7 @@ const Skills = () => {
         </motion.div>
 
         {/* Category Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
@@ -229,16 +220,16 @@ const Skills = () => {
             {duplicatedSkills.map((skill, index) => (
               <div
                 key={`${skill.name}-${index}`}
-                className="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-pointer group min-w-[100px]"
+                className="flex-shrink-0 flex flex-col items-center gap-1 md:gap-2 p-2 md:px-6 md:py-4 rounded-full md:rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-pointer group min-w-[56px] md:min-w-[100px]"
               >
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-background/50 p-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full md:rounded-xl bg-background/50 p-1.5 md:p-2 group-hover:scale-110 transition-transform duration-300">
                   <img 
                     src={skill.icon} 
                     alt={skill.name}
                     className="w-full h-full object-contain dark:brightness-110"
                   />
                 </div>
-                <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
+                <span className="text-[10px] md:text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap hidden md:block">
                   {skill.name}
                 </span>
               </div>
