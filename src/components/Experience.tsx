@@ -99,114 +99,75 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent md:-translate-x-1/2" />
-          
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
+        <div className="space-y-8">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex flex-col md:flex-row gap-8 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+                className="group relative bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50 p-6 md:p-8 hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5"
+                whileHover={{ y: -5 }}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 md:-translate-x-1/2 z-10">
-                  <motion.div 
-                    className={`w-4 h-4 rounded-full bg-gradient-to-r ${exp.color} shadow-lg`}
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.2, type: "spring" }}
-                  />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${exp.color} animate-ping opacity-20`} />
-                </div>
-
-                {/* Date badge - visible on desktop */}
-                <div className={`hidden md:flex w-1/2 ${index % 2 === 0 ? "justify-end pr-12" : "justify-start pl-12"}`}>
-                  <motion.div 
-                    className="flex flex-col items-center"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className={`px-4 py-2 rounded-xl bg-gradient-to-r ${exp.color} text-white font-bold text-sm shadow-lg`}>
-                      {exp.startDate}
-                    </div>
-                    <div className="w-0.5 h-6 bg-border" />
-                    <div className={`px-4 py-2 rounded-xl ${exp.endDate === "Present" ? `bg-gradient-to-r ${exp.color}` : "bg-card border border-border"} ${exp.endDate === "Present" ? "text-white" : "text-muted-foreground"} font-medium text-sm shadow-sm`}>
-                      {exp.endDate}
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Card */}
-                <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${index % 2 === 0 ? "md:pl-12" : "md:pr-12"}`}>
-                  <motion.div
-                    className="group relative bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50 p-6 hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5"
-                    whileHover={{ y: -5 }}
-                  >
-                    {/* Gradient accent */}
-                    <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r ${exp.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                    
-                    {/* Mobile date */}
-                    <div className="md:hidden flex items-center gap-2 mb-3">
-                      <span className={`px-3 py-1 rounded-full bg-gradient-to-r ${exp.color} text-white text-xs font-bold`}>
-                        {exp.startDate}
-                      </span>
-                      <span className="text-muted-foreground">→</span>
-                      <span className={`px-3 py-1 rounded-full ${exp.endDate === "Present" ? `bg-gradient-to-r ${exp.color} text-white` : "bg-muted text-muted-foreground"} text-xs font-medium`}>
-                        {exp.endDate}
-                      </span>
-                    </div>
-
-                    {/* Header */}
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${exp.color} shadow-lg`}>
+                {/* Left accent bar */}
+                <div className={`absolute left-0 top-6 bottom-6 w-1 rounded-full bg-gradient-to-b ${exp.color}`} />
+                
+                <div className="pl-4">
+                  {/* Header with title and date */}
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2.5 rounded-xl bg-gradient-to-br ${exp.color} shadow-lg`}>
                         <Briefcase className="h-5 w-5 text-white" />
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                      <div>
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                           {exp.title}
                         </h3>
-                        <p className="text-primary font-semibold">{exp.company}</p>
-                        <p className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
-                          <MapPin className="h-3 w-3" />
-                          {exp.location}
-                        </p>
+                        <div className="flex items-center gap-2 text-sm">
+                          <span className="text-primary font-semibold">{exp.company}</span>
+                          <span className="text-muted-foreground">•</span>
+                          <span className="text-muted-foreground flex items-center gap-1">
+                            <MapPin className="h-3 w-3" />
+                            {exp.location}
+                          </span>
+                        </div>
                       </div>
                     </div>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                      {exp.description}
-                    </p>
-
-                    {/* Achievements */}
-                    <div className="space-y-2">
-                      {exp.achievements.map((achievement, i) => (
-                        <motion.div 
-                          key={i} 
-                          className="flex items-start gap-2 text-sm"
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 + i * 0.1 }}
-                        >
-                          <ChevronRight className={`h-4 w-4 mt-0.5 flex-shrink-0 text-transparent bg-gradient-to-r ${exp.color} bg-clip-text`} style={{ color: index === 0 ? '#10b981' : index === 1 ? '#3b82f6' : index === 2 ? '#8b5cf6' : '#f97316' }} />
-                          <span className="text-foreground/80">{achievement}</span>
-                        </motion.div>
-                      ))}
+                    
+                    {/* Date badge */}
+                    <div className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r ${exp.color} text-white text-sm font-semibold shadow-md w-fit`}>
+                      {exp.startDate} — {exp.endDate}
                     </div>
-                  </motion.div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    {exp.description}
+                  </p>
+
+                  {/* Achievements */}
+                  <div className="flex flex-wrap gap-2">
+                    {exp.achievements.map((achievement, i) => (
+                      <motion.span 
+                        key={i} 
+                        className="inline-flex items-center gap-1.5 text-sm bg-secondary/50 text-foreground/80 px-3 py-1.5 rounded-full"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + i * 0.05 }}
+                      >
+                        <ChevronRight className="h-3 w-3 text-primary" />
+                        {achievement}
+                      </motion.span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
