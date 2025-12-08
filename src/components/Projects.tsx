@@ -1,13 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, ArrowRight, X, Check, Layers } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Check, Layers, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
 } from "@/components/ui/dialog";
 
 const projects = [
@@ -17,7 +15,11 @@ const projects = [
     description:
       "A comprehensive inventory management solution built with Laravel and Vue.js featuring real-time tracking, automated alerts, and detailed analytics.",
     technologies: ["Laravel", "Vue.js", "MySQL", "JavaScript"],
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+    ],
     features: [
       "Real-time inventory tracking",
       "Automated low-stock alerts",
@@ -34,7 +36,11 @@ const projects = [
     description:
       "An advanced lottery platform with secure random number generation, user management, and automated prize distribution system.",
     technologies: ["PHP", "Laravel", "MySQL", "Bootstrap"],
-    image: "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=500&fit=crop",
+    ],
     features: [
       "Secure random number generation",
       "User account management",
@@ -51,7 +57,11 @@ const projects = [
     description:
       "Government project for tracking and managing wildlife crime data with advanced security features and comprehensive reporting.",
     technologies: ["Laravel", "jQuery", "AJAX", "MySQL"],
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop",
+    ],
     features: [
       "Secure data encryption",
       "Role-based access control",
@@ -66,6 +76,24 @@ const projects = [
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
+    }
+  };
+
+  const openProject = (project: typeof projects[0]) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0);
+  };
 
   return (
     <section className="py-20 px-4 relative" id="projects">
@@ -109,13 +137,13 @@ const Projects = () => {
               <Card className="overflow-hidden bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow group h-full flex flex-col">
                 <div className="relative overflow-hidden h-48">
                   <img
-                    src={project.image}
+                    src={project.images[0]}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                     <Button
-                      onClick={() => setSelectedProject(project)}
+                      onClick={() => openProject(project)}
                       className="bg-primary hover:bg-primary/90 text-primary-foreground"
                     >
                       View Details
@@ -147,7 +175,7 @@ const Projects = () => {
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={() => setSelectedProject(project)}
+                      onClick={() => openProject(project)}
                       className="flex-1 border-primary text-primary hover:bg-primary/10"
                     >
                       View Details
@@ -170,23 +198,63 @@ const Projects = () => {
 
       {/* Project Detail Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-card/95 backdrop-blur-xl border-border">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card/95 backdrop-blur-xl border-border p-0">
           <AnimatePresence>
             {selectedProject && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Project Image */}
-                <div className="relative h-64 -mx-6 -mt-6 mb-6 overflow-hidden rounded-t-lg">
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+                {/* Image Gallery */}
+                <div className="relative h-72 md:h-80 overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentImageIndex}
+                      src={selectedProject.images[currentImageIndex]}
+                      alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
+                      className="w-full h-full object-cover"
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -50 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </AnimatePresence>
+                  
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                  
+                  {/* Navigation arrows */}
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+
+                  {/* Image indicators */}
+                  <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
+                    {selectedProject.images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentImageIndex(idx)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          idx === currentImageIndex 
+                            ? "bg-primary w-6" 
+                            : "bg-foreground/30 hover:bg-foreground/50"
+                        }`}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Title overlay */}
                   <div className="absolute bottom-4 left-6 right-6">
                     <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                       {selectedProject.title}
@@ -195,7 +263,7 @@ const Projects = () => {
                       {selectedProject.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 text-xs rounded-full bg-primary/20 text-primary-foreground backdrop-blur-sm"
+                          className="px-3 py-1 text-xs rounded-full bg-primary/80 text-primary-foreground backdrop-blur-sm font-medium"
                         >
                           {tech}
                         </span>
@@ -204,16 +272,33 @@ const Projects = () => {
                   </div>
                 </div>
 
+                {/* Thumbnail strip */}
+                <div className="flex gap-2 px-6 py-3 bg-secondary/30 overflow-x-auto">
+                  {selectedProject.images.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentImageIndex(idx)}
+                      className={`flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-all ${
+                        idx === currentImageIndex 
+                          ? "border-primary" 
+                          : "border-transparent opacity-60 hover:opacity-100"
+                      }`}
+                    >
+                      <img src={img} alt="" className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+
                 {/* Project Info */}
-                <div className="space-y-6">
+                <div className="p-6 space-y-6">
                   {/* Role & Duration */}
                   <div className="flex gap-4 flex-wrap">
                     <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
                       <Layers className="w-4 h-4 text-primary" />
-                      <span className="text-sm text-foreground">{selectedProject.role}</span>
+                      <span className="text-sm text-foreground font-medium">{selectedProject.role}</span>
                     </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-lg">
-                      <span className="text-sm text-foreground">Duration: {selectedProject.duration}</span>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg">
+                      <span className="text-sm text-foreground">Duration: <strong>{selectedProject.duration}</strong></span>
                     </div>
                   </div>
 

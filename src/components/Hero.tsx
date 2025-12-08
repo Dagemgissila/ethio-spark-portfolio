@@ -106,55 +106,54 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 mb-6"
             >
-              <span className="text-primary font-semibold text-lg">Hello, I'm</span>
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <span className="text-primary font-medium text-sm">Available for work</span>
             </motion.div>
             
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 leading-tight"
             >
+              <span className="text-muted-foreground font-normal">Hi, I'm </span>
               <span className="bg-gradient-primary bg-clip-text text-transparent">
                 Dagem Gissila
               </span>
             </motion.h1>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-2xl md:text-4xl text-foreground font-bold mb-2"
+              className="mb-6"
             >
-              Full Stack Developer
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-base md:text-lg text-muted-foreground mb-4"
-            >
-              Specialized in building scalable web applications
-            </motion.p>
+              <p className="text-xl sm:text-2xl md:text-3xl text-foreground font-bold mb-2">
+                Full Stack Developer
+              </p>
+              <p className="text-muted-foreground text-sm md:text-base max-w-md">
+                Building scalable web applications with modern technologies. 
+                Passionate about clean code and exceptional user experiences.
+              </p>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg text-muted-foreground mb-8 flex items-center gap-2 flex-wrap"
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex items-center gap-3 mb-8 flex-wrap"
             >
-              <span>I craft solutions with</span>
+              <span className="text-sm text-muted-foreground">Specialized in</span>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentTech}
-                  initial={{ y: 20, opacity: 0, scale: 0.8 }}
-                  animate={{ y: 0, opacity: 1, scale: 1 }}
-                  exit={{ y: -20, opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="text-primary font-bold text-xl md:text-2xl bg-primary/10 px-3 py-1 rounded-lg"
+                  initial={{ y: 15, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -15, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-primary font-bold text-base md:text-lg bg-primary/10 px-3 py-1 rounded-lg border border-primary/20"
                 >
                   {technologies[currentTech]}
                 </motion.span>
