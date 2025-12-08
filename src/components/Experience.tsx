@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin, ChevronRight } from "lucide-react";
+import { Briefcase, MapPin, ChevronRight } from "lucide-react";
 
 const experiences = [
   {
     title: "Fullstack Laravel Developer",
     company: "Upwork",
     location: "Remote",
-    period: "April 2024 - Present",
+    startDate: "Apr 2024",
+    endDate: "Present",
     description:
       "Building and maintaining web-based applications using Vue.js, Laravel, PHP, and MySQL. Developing scalable, secure, and user-friendly solutions for various business needs.",
     achievements: [
@@ -20,7 +21,8 @@ const experiences = [
     title: "Fullstack Laravel Developer",
     company: "Ibex Technologies and Promotion Plc",
     location: "Addis Ababa, Ethiopia",
-    period: "April 2023 - May 2024",
+    startDate: "Apr 2023",
+    endDate: "May 2024",
     description:
       "Developed and maintained web applications using JavaScript, Vue.js and PHP Laravel. Designed and optimized MySQL databases. Created stock management and lottery systems.",
     achievements: [
@@ -34,7 +36,8 @@ const experiences = [
     title: "Fullstack Laravel Developer",
     company: "Synapses Software Solutions",
     location: "Addis Ababa, Ethiopia",
-    period: "November 2022 - April 2024",
+    startDate: "Nov 2022",
+    endDate: "Apr 2024",
     description:
       "Built dynamic web applications using PHP Laravel and MySQL. Created interactive UIs with JavaScript, jQuery, and AJAX. Worked on Wild Crime Database System for government.",
     achievements: [
@@ -48,7 +51,8 @@ const experiences = [
     title: "Laravel Developer",
     company: "Minister of Innovation and Technology",
     location: "Addis Ababa, Ethiopia",
-    period: "July 2022 - September 2022",
+    startDate: "Jul 2022",
+    endDate: "Sep 2022",
     description:
       "Built and maintained web applications using PHP, Laravel, MySQL, Bootstrap, and JavaScript with responsive design.",
     achievements: [
@@ -127,11 +131,16 @@ const Experience = () => {
                 {/* Date badge - visible on desktop */}
                 <div className={`hidden md:flex w-1/2 ${index % 2 === 0 ? "justify-end pr-12" : "justify-start pl-12"}`}>
                   <motion.div 
-                    className="flex items-center gap-2 text-sm font-mono bg-card/80 backdrop-blur-sm px-4 py-2 rounded-full border border-border/50 shadow-sm"
+                    className="flex flex-col items-center"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Calendar className="h-4 w-4 text-primary" />
-                    <span className="text-muted-foreground">{exp.period}</span>
+                    <div className={`px-4 py-2 rounded-xl bg-gradient-to-r ${exp.color} text-white font-bold text-sm shadow-lg`}>
+                      {exp.startDate}
+                    </div>
+                    <div className="w-0.5 h-6 bg-border" />
+                    <div className={`px-4 py-2 rounded-xl ${exp.endDate === "Present" ? `bg-gradient-to-r ${exp.color}` : "bg-card border border-border"} ${exp.endDate === "Present" ? "text-white" : "text-muted-foreground"} font-medium text-sm shadow-sm`}>
+                      {exp.endDate}
+                    </div>
                   </motion.div>
                 </div>
 
@@ -145,9 +154,14 @@ const Experience = () => {
                     <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r ${exp.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                     
                     {/* Mobile date */}
-                    <div className="md:hidden flex items-center gap-2 text-xs font-mono text-muted-foreground mb-3">
-                      <Calendar className="h-3 w-3" />
-                      {exp.period}
+                    <div className="md:hidden flex items-center gap-2 mb-3">
+                      <span className={`px-3 py-1 rounded-full bg-gradient-to-r ${exp.color} text-white text-xs font-bold`}>
+                        {exp.startDate}
+                      </span>
+                      <span className="text-muted-foreground">→</span>
+                      <span className={`px-3 py-1 rounded-full ${exp.endDate === "Present" ? `bg-gradient-to-r ${exp.color} text-white` : "bg-muted text-muted-foreground"} text-xs font-medium`}>
+                        {exp.endDate}
+                      </span>
                     </div>
 
                     {/* Header */}
