@@ -131,7 +131,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight"
             >
               <span className="text-muted-foreground font-normal">Hi, I'm </span>
               <span className="bg-gradient-primary bg-clip-text text-transparent">
@@ -145,7 +145,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mb-6"
             >
-              <p className="text-xl sm:text-2xl md:text-3xl text-foreground font-bold mb-2">
+              <p className="text-lg sm:text-xl md:text-2xl text-foreground font-semibold mb-2">
                 Full Stack Developer
               </p>
               <p className="text-muted-foreground text-sm md:text-base max-w-md">
