@@ -27,6 +27,15 @@ const floatingIcons = [
   { src: pythonLogo, alt: "Python", invert: false, top: "90%", left: "15%", delay: 0.8, duration: 4.8 },
   { src: gitLogo, alt: "Git", invert: false, top: "5%", left: "45%", delay: 1.2, duration: 5.2 },
   { src: mysqlLogo, alt: "MySQL", invert: false, top: "88%", left: "75%", delay: 1.8, duration: 4.3 },
+  // Center area icons
+  { src: reactLogo, alt: "React", invert: false, top: "30%", left: "25%", delay: 0.3, duration: 4.6 },
+  { src: typescriptLogo, alt: "TypeScript", invert: false, top: "45%", left: "70%", delay: 0.7, duration: 5.1 },
+  { src: nextLogo, alt: "Next.js", invert: true, top: "60%", left: "30%", delay: 1.4, duration: 4.3 },
+  { src: laravelLogo, alt: "Laravel", invert: false, top: "20%", left: "60%", delay: 1.9, duration: 4.9 },
+  { src: expressLogo, alt: "Express", invert: true, top: "75%", left: "55%", delay: 2.2, duration: 5.3 },
+  { src: vueLogo, alt: "Vue", invert: false, top: "50%", left: "15%", delay: 2.8, duration: 4.1 },
+  { src: phpLogo, alt: "PHP", invert: false, top: "12%", left: "35%", delay: 0.4, duration: 4.7 },
+  { src: pythonLogo, alt: "Python", invert: false, top: "65%", left: "80%", delay: 1.1, duration: 5.4 },
 ];
 
 const Hero = () => {
