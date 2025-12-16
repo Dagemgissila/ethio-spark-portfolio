@@ -7,8 +7,27 @@ import nextLogo from "@/assets/skills/nextjs.svg";
 import laravelLogo from "@/assets/skills/laravel.svg";
 import expressLogo from "@/assets/skills/express.svg";
 import typescriptLogo from "@/assets/skills/typescript.svg";
+import reactLogo from "@/assets/skills/react.svg";
+import vueLogo from "@/assets/skills/vue.svg";
+import phpLogo from "@/assets/skills/php.svg";
+import pythonLogo from "@/assets/skills/python.svg";
+import gitLogo from "@/assets/skills/git.svg";
+import mysqlLogo from "@/assets/skills/mysql.svg";
 
 const technologies = ["Express.js", "Nest.js", "Laravel", "Next.js", "React.js"];
+
+const floatingIcons = [
+  { src: nextLogo, alt: "Next.js", invert: true, top: "8%", left: "5%", delay: 0, duration: 4 },
+  { src: reactLogo, alt: "React", invert: false, top: "15%", left: "85%", delay: 0.5, duration: 5 },
+  { src: laravelLogo, alt: "Laravel", invert: false, top: "70%", left: "8%", delay: 1, duration: 4.5 },
+  { src: typescriptLogo, alt: "TypeScript", invert: false, top: "80%", left: "90%", delay: 1.5, duration: 3.5 },
+  { src: expressLogo, alt: "Express", invert: true, top: "35%", left: "3%", delay: 2, duration: 5.5 },
+  { src: vueLogo, alt: "Vue", invert: false, top: "25%", left: "92%", delay: 2.5, duration: 4.2 },
+  { src: phpLogo, alt: "PHP", invert: false, top: "55%", left: "95%", delay: 3, duration: 3.8 },
+  { src: pythonLogo, alt: "Python", invert: false, top: "90%", left: "15%", delay: 0.8, duration: 4.8 },
+  { src: gitLogo, alt: "Git", invert: false, top: "5%", left: "45%", delay: 1.2, duration: 5.2 },
+  { src: mysqlLogo, alt: "MySQL", invert: false, top: "88%", left: "75%", delay: 1.8, duration: 4.3 },
+];
 
 const Hero = () => {
   const [currentTech, setCurrentTech] = useState(0);
@@ -22,9 +41,34 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
+      {/* Floating tech icons in background */}
+      {floatingIcons.map((icon, index) => (
+        <motion.div
+          key={index}
+          className="absolute z-0 opacity-20 dark:opacity-15"
+          style={{ top: icon.top, left: icon.left }}
+          animate={{
+            y: [0, -15, 0],
+            x: [0, 8, 0],
+            rotate: [0, 5, -5, 0],
+          }}
+          transition={{
+            duration: icon.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: icon.delay,
+          }}
+        >
+          <img
+            src={icon.src}
+            alt={icon.alt}
+            className={`w-6 h-6 sm:w-8 sm:h-8 ${icon.invert ? "dark:invert" : ""}`}
+          />
+        </motion.div>
+      ))}
+
       {/* Subtle animated gradient mesh background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Soft gradient orbs - very subtle */}
         <motion.div
           className="absolute -top-1/3 -left-1/3 w-[800px] h-[800px] bg-gradient-to-br from-muted/40 via-muted/20 to-transparent rounded-full blur-[120px]"
           animate={{
@@ -47,44 +91,6 @@ const Hero = () => {
           }}
           transition={{
             duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute top-1/3 right-1/3 w-[500px] h-[500px] bg-gradient-to-br from-muted/20 via-muted/15 to-transparent rounded-full blur-[100px]"
-          animate={{
-            x: [0, 80, -50, 0],
-            y: [0, -50, 80, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-        {/* Additional floating particles - very subtle */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-32 h-32 bg-muted/20 rounded-full blur-2xl"
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-muted/25 rounded-full blur-xl"
-          animate={{
-            scale: [1, 1.8, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -214,7 +220,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right side - Image with floating tech logos */}
+          {/* Right side - Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -241,62 +247,9 @@ const Hero = () => {
                 <img 
                   src={profileImage} 
                   alt="Dagem Gissila - Full Stack Developer"
-                  className="w-full h-full rounded-full object-cover shadow-2xl"
+                  className="w-full h-full rounded-full object-cover shadow-2xl border-4 border-primary/20"
                 />
               </div>
-
-              {/* Floating tech stack logos around image */}
-              {/* Next.js - Top */}
-              <motion.div
-                className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
-                animate={{ 
-                  y: [0, -12, 0]
-                }}
-                transition={{ 
-                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                }}
-              >
-                <img src={nextLogo} alt="Next.js" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 dark:invert" />
-              </motion.div>
-
-              {/* TypeScript - Right */}
-              <motion.div
-                className="absolute top-1/2 -right-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
-                animate={{ 
-                  x: [0, 12, 0]
-                }}
-                transition={{ 
-                  x: { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
-                }}
-              >
-                <img src={typescriptLogo} alt="TypeScript" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
-              </motion.div>
-
-              {/* Laravel - Bottom */}
-              <motion.div
-                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
-                animate={{ 
-                  y: [0, 12, 0]
-                }}
-                transition={{ 
-                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                }}
-              >
-                <img src={laravelLogo} alt="Laravel" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
-              </motion.div>
-
-              {/* Express.js - Left */}
-              <motion.div
-                className="absolute top-1/2 -left-4 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-card/95 backdrop-blur-md flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-primary/30 z-20"
-                animate={{ 
-                  x: [0, -12, 0]
-                }}
-                transition={{ 
-                  x: { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
-                }}
-              >
-                <img src={expressLogo} alt="Express.js" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 dark:invert" />
-              </motion.div>
             </div>
           </motion.div>
         </div>
