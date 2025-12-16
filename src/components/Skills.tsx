@@ -95,22 +95,19 @@ const Skills = () => {
               Am I?
             </span>
           </h2>
-          <div className="max-w-4xl mx-auto space-y-6 text-muted-foreground leading-relaxed">
-            <p className="text-xl md:text-2xl font-light italic">
-              "Transforming complex problems into <span className="text-primary font-semibold not-italic">elegant digital solutions</span>"
+          <div className="max-w-3xl mx-auto space-y-5 text-muted-foreground leading-relaxed">
+            <p className="text-base md:text-lg">
+              I am a dedicated <span className="text-primary font-semibold">Full Stack Developer</span> with expertise in 
+              building scalable, high-performance web applications. I specialize in modern frontend frameworks 
+              including <span className="text-foreground font-medium">React</span>, <span className="text-foreground font-medium">Vue.js</span>, and 
+              <span className="text-foreground font-medium"> Next.js</span>, alongside robust backend technologies such as 
+              <span className="text-foreground font-medium"> Node.js</span>, <span className="text-foreground font-medium">Nest.js</span>, and 
+              <span className="text-foreground font-medium"> Laravel</span>.
             </p>
-            <p className="text-base md:text-lg opacity-90">
-              I'm a <span className="text-primary font-semibold">Full-Stack Developer</span> with a passion for building 
-              high-performance web applications. From crafting pixel-perfect UIs with <span className="text-accent font-medium">React</span> and 
-              <span className="text-accent font-medium"> Vue.js</span> to architecting robust backends with 
-              <span className="text-accent font-medium"> Express.js</span>, <span className="text-accent font-medium">Nest.js</span>, and 
-              <span className="text-accent font-medium"> Laravel</span>.
-            </p>
-            <p className="text-base md:text-lg opacity-80">
-              I leverage modern tools like <span className="font-medium text-foreground/80">Redis</span> for caching, 
-              <span className="font-medium text-foreground/80"> Redux</span> and <span className="font-medium text-foreground/80">TanStack Query</span> for 
-              state management, and <span className="font-medium text-foreground/80">Docker</span> for containerization to deliver 
-              scalable, maintainable solutions that exceed expectations.
+            <p className="text-base md:text-lg">
+              With a strong foundation in database management, API development, and DevOps practices, 
+              I deliver end-to-end solutions that are both performant and maintainable. I am passionate 
+              about writing clean, efficient code and staying current with industry best practices.
             </p>
           </div>
         </motion.div>
