@@ -54,7 +54,7 @@ const Hero = () => {
       {floatingIcons.map((icon, index) => (
         <motion.div
           key={index}
-          className="absolute z-0 opacity-20 dark:opacity-15"
+          className="absolute z-0 opacity-40 dark:opacity-35"
           style={{ top: icon.top, left: icon.left }}
           animate={{
             y: [0, -15, 0],
@@ -71,7 +71,7 @@ const Hero = () => {
           <img
             src={icon.src}
             alt={icon.alt}
-            className={`w-6 h-6 sm:w-8 sm:h-8 ${icon.invert ? "dark:invert" : ""}`}
+            className={`w-8 h-8 sm:w-10 sm:h-10 ${icon.invert ? "dark:invert" : ""}`}
           />
         </motion.div>
       ))}
