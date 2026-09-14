@@ -1,5 +1,6 @@
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Award } from "lucide-react";
+import { GraduationCap, Award, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import TiltCard from "@/components/TiltCard";
 
@@ -19,14 +20,31 @@ const certificates = [
   {
     title: "The Ultimate Next.js 15 Course",
     issuer: "JavaScript Mastery",
+    color: "from-blue-500 to-cyan-400",
   },
   {
     title: "React — The Complete Guide 2025",
     issuer: "Udemy (incl. Next.js, Redux)",
+    color: "from-emerald-500 to-teal-400",
   },
 ];
 
 const Education = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  };
+
+  const scroll = (direction: "left" | "right") => {
+    scrollRef.current?.scrollBy({ left: direction === "left" ? -320 : 320, behavior: "smooth" });
+  };
+
   return (
     <section className="py-20 px-4 bg-card/30 relative overflow-hidden" id="education">
       <div className="absolute top-10 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
@@ -55,14 +73,18 @@ const Education = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-6"
+          className="mb-14"
         >
           <TiltCard maxTilt={4}>
             <Card className="p-8 bg-card border-border hover:border-primary/50 transition-all duration-300 shadow-md hover:shadow-2xl hover:shadow-primary/10">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-primary/10 flex-shrink-0">
+                <motion.div
+                  className="p-3 rounded-lg bg-primary/10 flex-shrink-0"
+                  whileHover={{ rotate: -8, scale: 1.08 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <GraduationCap className="h-8 w-8 text-primary" />
-                </div>
+                </motion.div>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
                     <div>
@@ -97,7 +119,51 @@ const Education = () => {
           </TiltCard>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Certificates — horizontal scroll */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center justify-between mb-5"
+        >
+          <h3 className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase">
+            Certificates
+          </h3>
+          <div className="flex gap-2">
+            <button
+              onClick={() => scroll("left")}
+              disabled={!canScrollLeft}
+              aria-label="Scroll certificates left"
+              className={`p-2 rounded-full border transition-all duration-300 ${
+                canScrollLeft
+                  ? "border-primary/50 hover:bg-primary/10 text-foreground"
+                  : "border-border text-muted-foreground opacity-40 cursor-not-allowed"
+              }`}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              disabled={!canScrollRight}
+              aria-label="Scroll certificates right"
+              className={`p-2 rounded-full border transition-all duration-300 ${
+                canScrollRight
+                  ? "border-primary/50 hover:bg-primary/10 text-foreground"
+                  : "border-border text-muted-foreground opacity-40 cursor-not-allowed"
+              }`}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </motion.div>
+
+        <div
+          ref={scrollRef}
+          onScroll={checkScroll}
+          className="flex gap-6 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {certificates.map((cert, index) => (
             <motion.div
               key={cert.title}
@@ -105,21 +171,29 @@ const Education = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="flex-shrink-0 w-72 sm:w-80 snap-start"
             >
               <TiltCard maxTilt={6}>
-                <Card className="p-6 bg-card border-border hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-2xl hover:shadow-primary/10 h-full">
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
-                      <Award className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-foreground mb-1">
-                        {cert.title}
-                      </h4>
-                      <p className="text-primary font-medium text-sm">
-                        {cert.issuer}
-                      </p>
-                    </div>
+                <Card className="overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-2xl hover:shadow-primary/10 h-full">
+                  {/* Image placeholder */}
+                  <div
+                    className={`relative h-32 bg-gradient-to-br ${cert.color} flex items-center justify-center overflow-hidden`}
+                  >
+                    <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_30%,white,transparent_60%)]" />
+                    <motion.div
+                      whileHover={{ scale: 1.15, rotate: 8 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Award className="h-12 w-12 text-white/90" />
+                    </motion.div>
+                  </div>
+                  <div className="p-5">
+                    <h4 className="text-base font-bold text-foreground mb-1 leading-snug">
+                      {cert.title}
+                    </h4>
+                    <p className="text-primary font-medium text-sm">
+                      {cert.issuer}
+                    </p>
                   </div>
                 </Card>
               </TiltCard>

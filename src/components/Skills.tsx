@@ -159,13 +159,18 @@ const Skills = () => {
               Core Stack
             </div>
             <div className="flex flex-wrap gap-2 mb-6">
-              {coreStack.map((tech) => (
-                <span
+              {coreStack.map((tech, i) => (
+                <motion.span
                   key={tech}
-                  className="font-mono text-xs px-2.5 py-1.5 rounded-md bg-secondary/60 border border-border text-foreground/80"
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.05, duration: 0.3 }}
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  className="font-mono text-xs px-2.5 py-1.5 rounded-md bg-secondary/60 border border-border text-foreground/80 hover:border-primary/50 hover:text-primary hover:shadow-glow transition-colors cursor-default"
                 >
                   {tech}
-                </span>
+                </motion.span>
               ))}
             </div>
 
@@ -307,13 +312,15 @@ const Skills = () => {
             }}
           >
             {duplicatedSkills.map((skill, index) => (
-              <div
+              <motion.div
                 key={`${skill.name}-${index}`}
-                className="flex-shrink-0 flex flex-col items-center gap-1 md:gap-2 p-2 md:px-6 md:py-4 rounded-full md:rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-pointer group min-w-[56px] md:min-w-[100px]"
+                whileHover={{ y: -6, scale: 1.08 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className="flex-shrink-0 flex flex-col items-center gap-1 md:gap-2 p-2 md:px-6 md:py-4 rounded-full md:rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-glow transition-colors duration-300 cursor-pointer group min-w-[56px] md:min-w-[100px]"
               >
                 <div className="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full md:rounded-xl bg-background/50 p-1.5 md:p-2 group-hover:scale-110 transition-transform duration-300">
-                  <img 
-                    src={skill.icon} 
+                  <img
+                    src={skill.icon}
                     alt={skill.name}
                     className="w-full h-full object-contain dark:brightness-110"
                   />
@@ -321,7 +328,7 @@ const Skills = () => {
                 <span className="text-[10px] md:text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap hidden md:block">
                   {skill.name}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
