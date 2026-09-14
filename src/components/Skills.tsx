@@ -132,8 +132,9 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-xl border border-border bg-card p-6 sm:p-7"
           >
+          <TiltCard maxTilt={5}>
+          <div className="rounded-xl border border-border bg-card p-6 sm:p-7 shadow-md">
             <div className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase mb-5">
               At a Glance
             </div>
@@ -192,6 +193,8 @@ const Skills = () => {
                 </a>
               </Magnetic>
             </div>
+          </div>
+          </TiltCard>
           </motion.div>
         </div>
       </div>
@@ -205,13 +208,11 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-accent bg-accent/10 rounded-full">
-            MY EXPERTISE
+          <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
+            My Expertise
           </span>
-          <h3 className="text-3xl md:text-5xl font-black font-display">
-            <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent underline decoration-primary/30 decoration-4 underline-offset-8">
-              Technical Skills
-            </span>
+          <h3 className="font-display text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+            Technical Skills
           </h3>
         </motion.div>
 

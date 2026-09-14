@@ -121,18 +121,13 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
-            MY WORK
+            My Work
           </span>
-          <h2 className="text-4xl md:text-5xl font-black font-display mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Featured
-            </span>{" "}
-            <span className="text-accent">
-              Projects
-            </span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 tracking-tight text-foreground">
+            Featured Projects
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Some of my recent work that showcases my skills and expertise
+            A selection of production systems I've designed, built and shipped
           </p>
         </motion.div>
 
@@ -145,8 +140,8 @@ const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <TiltCard maxTilt={6} className="group h-full">
-              <Card className="overflow-hidden bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow h-full flex flex-col">
+              <TiltCard maxTilt={8} className="group h-full">
+              <Card className="overflow-hidden bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 shadow-md hover:shadow-2xl hover:shadow-primary/10 h-full flex flex-col">
                 <div className="relative overflow-hidden h-48">
                   <img
                     src={project.images[0]}

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Magnetic from "@/components/Magnetic";
+import FloatingTechBackground from "@/components/FloatingTechBackground";
 
 const Hero = () => {
   return (
@@ -9,6 +10,8 @@ const Hero = () => {
       {/* Ambient glow */}
       <div className="absolute -top-40 -right-32 w-[600px] h-[600px] rounded-full bg-primary/10 dark:bg-primary/15 blur-[120px]" />
       <div className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full bg-primary/5 dark:bg-primary/10 blur-[120px]" />
+
+      <FloatingTechBackground />
 
       <div className="max-w-3xl mx-auto w-full relative z-10 text-center">
         <motion.div
