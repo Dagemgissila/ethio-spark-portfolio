@@ -3,64 +3,64 @@ import { Briefcase, MapPin, ChevronRight } from "lucide-react";
 
 const experiences = [
   {
-    title: "Fullstack Laravel Developer",
-    company: "Upwork",
-    location: "Remote",
-    startDate: "Apr 2024",
+    title: "Fullstack Developer",
+    company: "Safaricom Ethiopia",
+    location: "Addis Ababa, Ethiopia",
+    startDate: "May 2026",
     endDate: "Present",
     description:
-      "Building and maintaining web-based applications using Vue.js, Laravel, PHP, and MySQL. Developing scalable, secure, and user-friendly solutions for various business needs.",
+      "Developing and maintaining internal enterprise systems using Next.js, React.js, Node.js and NestJS. Building scalable backend services and RESTful APIs, and shipping through Docker, Kubernetes and Helm.",
     achievements: [
-      "Delivered 15+ successful projects for international clients",
-      "Maintained 100% client satisfaction rating",
-      "Specialized in Laravel & Vue.js full-stack development"
+      "Built RBAC, auth and business workflows for internal systems",
+      "Deployed via Argo CD and Jenkins CI/CD pipelines",
+      "Containerized services with Docker, Kubernetes and Helm"
     ],
-    color: "from-emerald-500 to-teal-500"
+    color: "from-amber-500 to-orange-500"
   },
   {
-    title: "Fullstack Laravel Developer",
-    company: "Ibex Technologies and Promotion Plc",
+    title: "Software Developer",
+    company: "Ashewa Technologies Solutions",
     location: "Addis Ababa, Ethiopia",
-    startDate: "Apr 2023",
-    endDate: "May 2024",
+    startDate: "Aug 2024",
+    endDate: "Mar 2026",
     description:
-      "Developed and maintained web applications using JavaScript, Vue.js and PHP Laravel. Designed and optimized MySQL databases. Created stock management and lottery systems.",
+      "Developed and maintained full-stack web applications using Laravel, Node.js, PostgreSQL and Express.js, including real-time features and third-party payment integrations.",
     achievements: [
-      "Built enterprise stock management system",
-      "Developed secure lottery platform with 10K+ users",
-      "Optimized database queries for 60% performance improvement"
+      "Built RESTful APIs and WebSocket real-time communication",
+      "Integrated payment gateways for secure transactions",
+      "Added Redis caching and containerized with Docker"
     ],
-    color: "from-blue-500 to-cyan-500"
+    color: "from-teal-500 to-emerald-500"
   },
   {
-    title: "Fullstack Laravel Developer",
-    company: "Synapses Software Solutions",
-    location: "Addis Ababa, Ethiopia",
-    startDate: "Nov 2022",
-    endDate: "Apr 2024",
+    title: "Fullstack Developer",
+    company: "Freelance",
+    location: "Remote",
+    startDate: "Apr 2024",
+    endDate: "Aug 2025",
     description:
-      "Built dynamic web applications using PHP Laravel and MySQL. Created interactive UIs with JavaScript, jQuery, and AJAX. Worked on Wild Crime Database System for government.",
+      "Built and maintained full-stack web applications for various clients using React.js, Next.js, Node.js, Express.js and Laravel, with JWT-based auth and automated deployment pipelines.",
     achievements: [
-      "Developed government wildlife crime database system",
-      "Implemented real-time data synchronization",
-      "Created comprehensive reporting dashboard"
+      "Designed scalable backend architectures for client projects",
+      "Set up CI/CD with GitHub Actions and Jenkins",
+      "Containerized and deployed to cloud and VPS servers"
     ],
     color: "from-violet-500 to-purple-500"
   },
   {
     title: "Laravel Developer",
-    company: "Minister of Innovation and Technology",
+    company: "Synapse Software Solutions",
     location: "Addis Ababa, Ethiopia",
-    startDate: "Jul 2022",
-    endDate: "Sep 2022",
+    startDate: "Oct 2023",
+    endDate: "Apr 2024",
     description:
-      "Built and maintained web applications using PHP, Laravel, MySQL, Bootstrap, and JavaScript with responsive design.",
+      "Developed dynamic web applications using PHP (Laravel) and MySQL, including a government Wildlife Crime Database System focused on performance and secure data management.",
     achievements: [
-      "Contributed to national technology initiatives",
-      "Developed responsive government portals",
-      "Collaborated with cross-functional teams"
+      "Contributed to a government wildlife crime database system",
+      "Built interactive UIs with JavaScript, jQuery and AJAX",
+      "Deployed and managed production cPanel environments"
     ],
-    color: "from-orange-500 to-amber-500"
+    color: "from-slate-500 to-slate-400"
   },
 ];
 

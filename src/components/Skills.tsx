@@ -2,71 +2,75 @@ import { motion } from "framer-motion";
 import { Server, Database, Cog, Code2 } from "lucide-react";
 import TiltCard from "@/components/TiltCard";
 
-// Tech stack data organized by category
-const skillCategories = [
+type Skill = { name: string; icon?: string };
+
+// Tech stack data organized by category — mirrors the Skills section of the CV
+const skillCategories: { title: string; icon: typeof Code2; color: string; skills: Skill[] }[] = [
   {
-    title: "Frontend Development",
+    title: "Frontend",
     icon: Code2,
     color: "from-blue-500 to-cyan-400",
     skills: [
+      { name: "React.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
       { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-      { name: "React.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Vue.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" },
-      { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
     ],
   },
   {
-    title: "Backend Development",
+    title: "Backend",
     icon: Server,
     color: "from-purple-500 to-pink-400",
     skills: [
       { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "NestJS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" },
       { name: "Express.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
-      { name: "Nest.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" },
-      { name: "Laravel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
+      { name: "PHP (Laravel)", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
     ],
   },
   {
-    title: "Database & Storage",
+    title: "Data",
     icon: Database,
     color: "from-emerald-500 to-teal-400",
     skills: [
-      { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
       { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+      { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
       { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+      { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
     ],
   },
   {
-    title: "DevOps & Tools",
+    title: "DevOps",
     icon: Cog,
     color: "from-orange-500 to-amber-400",
     skills: [
       { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-      { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-      { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
+      { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
+      { name: "Helm" },
+      { name: "Jenkins CI/CD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+      { name: "GitLab CI/CD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" },
+      { name: "GitHub Actions" },
+      { name: "Argo CD" },
     ],
   },
 ];
 
 // All skills for horizontal scroll
-const allSkills = [
-  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+const allSkills: Skill[] = [
   { name: "React.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-  { name: "Vue.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" },
   { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
   { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+  { name: "NestJS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" },
   { name: "Express.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
-  { name: "Nest.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" },
   { name: "Laravel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
-  { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
   { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+  { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
   { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-  { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
   { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
-  { name: "Redux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
-  { name: "TanStack", icon: "https://raw.githubusercontent.com/TanStack/query/main/media/emblem-light.svg" },
+  { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+  { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
+  { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
 ];
 
 const duplicatedSkills = [...allSkills, ...allSkills];
@@ -98,17 +102,17 @@ const Skills = () => {
           </h2>
           <div className="max-w-3xl mx-auto space-y-5 text-muted-foreground leading-relaxed">
             <p className="text-base md:text-lg">
-              I am a dedicated <span className="text-primary font-semibold">Full Stack Developer</span> with expertise in 
-              building scalable, high-performance web applications. I specialize in modern frontend frameworks 
-              including <span className="text-foreground font-medium">React</span>, <span className="text-foreground font-medium">Vue.js</span>, and 
-              <span className="text-foreground font-medium"> Next.js</span>, alongside robust backend technologies such as 
-              <span className="text-foreground font-medium"> Node.js</span>, <span className="text-foreground font-medium">Nest.js</span>, and 
+              I'm a <span className="text-primary font-semibold">Fullstack &amp; Backend Developer</span> with three
+              years building enterprise web applications and backend services across
+              <span className="text-foreground font-medium"> Next.js</span>, <span className="text-foreground font-medium">React</span>,
+              <span className="text-foreground font-medium"> NestJS</span>, <span className="text-foreground font-medium">Node.js</span> and
               <span className="text-foreground font-medium"> Laravel</span>.
             </p>
             <p className="text-base md:text-lg">
-              With a strong foundation in database management, API development, and DevOps practices, 
-              I deliver end-to-end solutions that are both performant and maintainable. I am passionate 
-              about writing clean, efficient code and staying current with industry best practices.
+              I'm comfortable owning a feature end to end — from API design and database performance to
+              shipping it through <span className="text-foreground font-medium">Docker</span>,
+              <span className="text-foreground font-medium"> Kubernetes</span> and CI/CD pipelines. Currently building
+              internal enterprise systems at Safaricom Ethiopia.
             </p>
           </div>
         </motion.div>
@@ -162,12 +166,18 @@ const Skills = () => {
                         key={skill.name}
                         className="flex items-center gap-3 group/skill"
                       >
-                        <div className="w-8 h-8 rounded-lg bg-background/50 p-1.5 group-hover/skill:scale-110 transition-transform">
-                          <img
-                            src={skill.icon}
-                            alt={skill.name}
-                            className="w-full h-full object-contain dark:brightness-110"
-                          />
+                        <div className="w-8 h-8 rounded-lg bg-background/50 p-1.5 group-hover/skill:scale-110 transition-transform flex items-center justify-center">
+                          {skill.icon ? (
+                            <img
+                              src={skill.icon}
+                              alt={skill.name}
+                              className="w-full h-full object-contain dark:brightness-110"
+                            />
+                          ) : (
+                            <span className="font-mono text-[10px] font-semibold text-primary">
+                              {skill.name.slice(0, 2).toUpperCase()}
+                            </span>
+                          )}
                         </div>
                         <span className="text-sm text-muted-foreground group-hover/skill:text-foreground transition-colors">
                           {skill.name}

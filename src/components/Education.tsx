@@ -3,27 +3,25 @@ import { GraduationCap, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const education = {
-  degree: "Bachelor's of Information Technology",
-  school: "Arbaminch University Ethiopia",
+  degree: "B.Sc. Information Technology",
+  school: "Arba Minch University",
   period: "September 2019 - September 2023",
-  gpa: "3.51/4.0",
+  gpa: "3.51/4.00",
   highlights: [
-    "Comprehensive knowledge in software development and database management",
-    "System design and architecture",
-    "Web application development and optimization projects",
+    "Strong theoretical and practical knowledge in software engineering, web development, and system design",
+    "Solid foundation in programming, data structures, algorithms, and database systems",
+    "Academic projects focused on real-world problem solving and application development",
   ],
 };
 
 const certificates = [
   {
-    title: "The Ultimate Next.js 15",
-    issuer: "Javascript Mastery",
-    period: "May 2025 - June 2025",
+    title: "The Ultimate Next.js 15 Course",
+    issuer: "JavaScript Mastery",
   },
   {
-    title: "React - The Complete Guide 2025",
-    issuer: "Udemy",
-    period: "January 2025 - February 2025",
+    title: "React — The Complete Guide 2025",
+    issuer: "Udemy (incl. Next.js, Redux)",
   },
 ];
 
@@ -108,11 +106,8 @@ const Education = () => {
                     <h4 className="text-lg font-bold text-foreground mb-1">
                       {cert.title}
                     </h4>
-                    <p className="text-primary font-medium text-sm mb-1">
+                    <p className="text-primary font-medium text-sm">
                       {cert.issuer}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {cert.period}
                     </p>
                   </div>
                 </div>

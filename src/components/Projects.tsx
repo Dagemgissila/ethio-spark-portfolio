@@ -11,67 +11,77 @@ import {
 
 const projects = [
   {
-    id: "stock-management",
-    title: "Stock Management System",
+    id: "ride-hailing",
+    title: "Ride Hailing Application",
     description:
-      "A comprehensive inventory management solution built with Laravel and Vue.js featuring real-time tracking, automated alerts, and detailed analytics.",
-    technologies: ["Laravel", "Vue.js", "MySQL", "JavaScript"],
+      "A scalable, real-time transportation platform with live driver/rider tracking and integrated local payments.",
+    technologies: ["Node.js", "WebSockets", "Telebirr", "Docker"],
     images: [
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=500&fit=crop",
     ],
     features: [
-      "Real-time inventory tracking",
-      "Automated low-stock alerts",
-      "Detailed analytics dashboard",
-      "Multi-warehouse support",
-      "Barcode scanning integration",
+      "Real-time driver/rider location via WebSockets",
+      "Telebirr payment gateway (C2B & B2C)",
+      "RESTful APIs with auth & role-based access control",
+      "Dockerized deployment with monitoring",
     ],
-    role: "Full Stack Developer",
-    duration: "3 months",
+    role: "Fullstack Developer",
   },
   {
-    id: "lottery-system",
-    title: "Lottery System",
+    id: "devflow",
+    title: "DevFlow — Stack Overflow Clone",
     description:
-      "An advanced lottery platform with secure random number generation, user management, and automated prize distribution system.",
-    technologies: ["PHP", "Laravel", "MySQL", "Bootstrap"],
+      "A full-featured Q&A platform: AI-assisted answers, voting, tags, global search and a job finder — built solo.",
+    technologies: ["Next.js", "TypeScript", "MongoDB", "ShadCN UI"],
     images: [
-      "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=500&fit=crop",
     ],
     features: [
-      "Secure random number generation",
-      "User account management",
-      "Automated prize distribution",
-      "Payment gateway integration",
-      "Real-time draw results",
+      "NextAuth login via Email, Google & GitHub",
+      "AI-generated answers, voting & bookmarking",
+      "Rich MDX content — images & code blocks",
+      "Global search, tags & personalized recommendations",
     ],
-    role: "Backend Developer",
-    duration: "4 months",
+    role: "Personal Project",
+    liveUrl: "https://devflow-beige.vercel.app/",
   },
   {
-    id: "wild-crime-database",
-    title: "Wild Crime Database System",
+    id: "wildlife-crime-database",
+    title: "Ethiopian Wildlife Crime Database System",
     description:
-      "Government project for tracking and managing wildlife crime data with advanced security features and comprehensive reporting.",
-    technologies: ["Laravel", "jQuery", "AJAX", "MySQL"],
+      "A government system for recording, tracking and analyzing wildlife crime cases to support law enforcement and conservation agencies.",
+    technologies: ["Laravel", "MySQL", "JavaScript", "Yajra DataTables"],
     images: [
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1549366021-9f761d450615?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&h=500&fit=crop",
     ],
     features: [
-      "Secure data encryption",
-      "Role-based access control",
-      "Comprehensive reporting",
-      "Data visualization",
-      "Audit trail logging",
+      "Secure case recording, tracking & retrieval",
+      "Reporting & analytics with crime-pattern filters",
+      "Optimized relational models for data consistency",
     ],
-    role: "Lead Developer",
-    duration: "6 months",
+    role: "Laravel Developer",
+    duration: "Oct 2023 – Apr 2024",
+    liveUrl: "https://wildlifecrime.gov.et/",
+  },
+  {
+    id: "inventory-management",
+    title: "Inventory Management System",
+    description:
+      "A responsive dashboard for managing products, categories, suppliers and stock levels, with real-time low-inventory alerts.",
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    images: [
+      "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&h=500&fit=crop",
+    ],
+    features: [
+      "RESTful APIs for CRUD & inventory tracking",
+      "Real-time stock updates & low-inventory alerts",
+      "Optimized queries and production deployment",
+    ],
+    role: "Fullstack Developer",
   },
 ];
 
@@ -187,8 +197,11 @@ const Projects = () => {
                       size="sm"
                       variant="outline"
                       className="border-border hover:border-primary/50"
+                      asChild
                     >
-                      <Github className="h-4 w-4" />
+                      <a href="https://github.com/Dagemgissila" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                        <Github className="h-4 w-4" />
+                      </a>
                     </Button>
                   </div>
                 </div>
@@ -296,13 +309,17 @@ const Projects = () => {
                 <div className="p-6 space-y-6">
                   {/* Role & Duration */}
                   <div className="flex gap-4 flex-wrap">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
-                      <Layers className="w-4 h-4 text-primary" />
-                      <span className="text-sm text-foreground font-medium">{selectedProject.role}</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg">
-                      <span className="text-sm text-foreground">Duration: <strong>{selectedProject.duration}</strong></span>
-                    </div>
+                    {selectedProject.role && (
+                      <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
+                        <Layers className="w-4 h-4 text-primary" />
+                        <span className="text-sm text-foreground font-medium">{selectedProject.role}</span>
+                      </div>
+                    )}
+                    {selectedProject.duration && (
+                      <div className="flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg">
+                        <span className="text-sm text-foreground">Duration: <strong>{selectedProject.duration}</strong></span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Description */}
@@ -334,13 +351,19 @@ const Projects = () => {
 
                   {/* Actions */}
                   <div className="flex gap-3 pt-4 border-t border-border">
-                    <Button className="flex-1 bg-primary hover:bg-primary/90">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Live Demo
-                    </Button>
-                    <Button variant="outline" className="flex-1 border-border hover:border-primary">
-                      <Github className="mr-2 h-4 w-4" />
-                      View Code
+                    {selectedProject.liveUrl && (
+                      <Button className="flex-1 bg-primary hover:bg-primary/90" asChild>
+                        <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Live Site
+                        </a>
+                      </Button>
+                    )}
+                    <Button variant="outline" className="flex-1 border-border hover:border-primary" asChild>
+                      <a href="https://github.com/Dagemgissila" target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-2 h-4 w-4" />
+                        GitHub Profile
+                      </a>
                     </Button>
                   </div>
                 </div>

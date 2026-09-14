@@ -1,97 +1,94 @@
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Github, Calendar, Users, Code } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 const projectsData = [
   {
-    id: "stock-management",
-    title: "Stock Management System",
+    id: "ride-hailing",
+    title: "Ride Hailing Application",
     description:
-      "A comprehensive inventory management solution built with Laravel and Vue.js featuring real-time tracking, automated alerts, and detailed analytics.",
+      "A scalable, real-time transportation platform with live driver/rider tracking and integrated local payments.",
     longDescription:
-      "This enterprise-grade inventory management system was designed to streamline stock tracking across multiple warehouses. The system provides real-time inventory updates, automated low-stock alerts, and comprehensive analytics dashboard. Built with a Laravel backend and Vue.js frontend, it handles thousands of transactions daily with sub-second response times.",
-    technologies: ["Laravel", "Vue.js", "MySQL", "JavaScript", "Redis", "Docker"],
+      "Designed and developed a ride-hailing application using modern full-stack technologies, with real-time communication between drivers and riders via WebSockets for live location and trip updates. Integrated the Telebirr payment gateway (C2B & B2C) for secure digital transactions, developed the REST APIs, and handled authentication, authorization and role-based access control. Dockerized and deployed to production with monitoring.",
+    technologies: ["Node.js", "WebSockets", "Telebirr", "Docker"],
     images: [
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop"
+      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&h=800&fit=crop",
     ],
     features: [
-      "Real-time inventory tracking across multiple locations",
-      "Automated low-stock alerts and reorder suggestions",
-      "Advanced analytics and reporting dashboard",
-      "Barcode scanning integration",
-      "Multi-user role management",
-      "RESTful API for third-party integrations"
+      "Real-time driver/rider location via WebSockets",
+      "Telebirr payment gateway (C2B & B2C)",
+      "RESTful APIs with auth & role-based access control",
+      "Dockerized deployment with monitoring",
     ],
-    stats: {
-      duration: "6 months",
-      team: "4 developers",
-      lines: "50K+"
-    },
-    liveUrl: "#",
-    githubUrl: "#"
+    role: "Fullstack Developer",
+    liveUrl: null as string | null,
   },
   {
-    id: "lottery-system",
-    title: "Lottery System",
+    id: "devflow",
+    title: "DevFlow — Stack Overflow Clone",
     description:
-      "An advanced lottery platform with secure random number generation, user management, and automated prize distribution system.",
+      "A full-featured Q&A platform: AI-assisted answers, voting, tags, global search and a job finder — built solo.",
     longDescription:
-      "A secure and scalable lottery platform that handles thousands of concurrent users during draw events. The system implements cryptographically secure random number generation, real-time ticket purchase validation, and automated prize distribution. Built with Laravel and modern JavaScript, it ensures fair play and transparent operations.",
-    technologies: ["PHP", "Laravel", "MySQL", "Bootstrap", "jQuery", "WebSockets"],
+      "A Stack Overflow-style Q&A platform built with Next.js, TypeScript and MongoDB. Implemented secure authentication with NextAuth (Email/Password, Google, GitHub), core features including question posting, AI-generated answers, voting, bookmarking and rich MDX content support. Designed home page filters, global search, tags and personalized recommendations, plus community features like profiles, badges, activity tracking and a location-based job finder.",
+    technologies: ["Next.js", "TypeScript", "MongoDB", "ShadCN UI", "NextAuth"],
     images: [
-      "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1534951009808-766178b47a4f?w=1200&h=800&fit=crop"
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=800&fit=crop",
     ],
     features: [
-      "Cryptographically secure random number generation",
-      "Real-time draw broadcasting",
-      "Automated prize distribution",
-      "User ticket management dashboard",
-      "Payment gateway integration",
-      "Comprehensive audit logging"
+      "NextAuth login via Email, Google & GitHub",
+      "AI-generated answers, voting & bookmarking",
+      "Rich MDX content — images & code blocks",
+      "Global search, tags & personalized recommendations",
+      "User profiles, badges & a location-based job finder",
     ],
-    stats: {
-      duration: "4 months",
-      team: "3 developers",
-      lines: "35K+"
-    },
-    liveUrl: "#",
-    githubUrl: "#"
+    role: "Personal Project",
+    liveUrl: "https://devflow-beige.vercel.app/",
   },
   {
-    id: "wild-crime-database",
-    title: "Wild Crime Database System",
+    id: "wildlife-crime-database",
+    title: "Ethiopian Wildlife Crime Database System",
     description:
-      "Government project for tracking and managing wildlife crime data with advanced security features and comprehensive reporting.",
+      "A government system for recording, tracking and analyzing wildlife crime cases to support law enforcement and conservation agencies.",
     longDescription:
-      "A specialized database system developed for government agencies to track and analyze wildlife crime patterns. The system features advanced security protocols, encrypted data storage, and comprehensive reporting tools. Built with Laravel and modern web technologies, it helps law enforcement agencies coordinate efforts and identify crime patterns.",
-    technologies: ["Laravel", "jQuery", "AJAX", "MySQL", "PHP", "ChartJS"],
+      "A secure database system for recording, tracking and retrieving wildlife crime cases, built to improve decision-making for law enforcement and conservation agencies in Ethiopia. Implemented reporting and analytics features with filters to surface crime patterns, and structured relational models to ensure data consistency, scalability and usability.",
+    technologies: ["Laravel", "MySQL", "JavaScript", "Yajra DataTables"],
     images: [
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=800&fit=crop"
+      "https://images.unsplash.com/photo-1549366021-9f761d450615?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1200&h=800&fit=crop",
     ],
     features: [
-      "Secure case management system",
-      "Geographic crime pattern visualization",
-      "Multi-agency data sharing",
-      "Advanced search and filtering",
-      "Automated report generation",
-      "Role-based access control"
+      "Secure case recording, tracking & retrieval",
+      "Reporting & analytics with crime-pattern filters",
+      "Optimized relational models for data consistency",
     ],
-    stats: {
-      duration: "8 months",
-      team: "5 developers",
-      lines: "60K+"
-    },
-    liveUrl: "#",
-    githubUrl: "#"
-  }
+    role: "Laravel Developer",
+    duration: "Oct 2023 – Apr 2024",
+    liveUrl: "https://wildlifecrime.gov.et/",
+  },
+  {
+    id: "inventory-management",
+    title: "Inventory Management System",
+    description:
+      "A responsive dashboard for managing products, categories, suppliers and stock levels, with real-time low-inventory alerts.",
+    longDescription:
+      "Built responsive, user-friendly dashboards for managing products, categories, suppliers and stock levels. Designed and implemented RESTful APIs for CRUD operations and inventory tracking, added real-time stock updates and low-inventory alerts to improve operational efficiency, and optimized database queries for production deployment.",
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    images: [
+      "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200&h=800&fit=crop",
+    ],
+    features: [
+      "RESTful APIs for CRUD & inventory tracking",
+      "Real-time stock updates & low-inventory alerts",
+      "Optimized queries and production deployment",
+    ],
+    role: "Fullstack Developer",
+    liveUrl: null as string | null,
+  },
 ];
 
 const ProjectDetail = () => {
@@ -142,31 +139,34 @@ const ProjectDetail = () => {
             {project.description}
           </p>
 
-          {/* Stats */}
+          {/* Role & duration */}
           <div className="flex flex-wrap gap-6 mb-6">
             <div className="flex items-center gap-2 text-muted-foreground">
-              <Calendar className="h-5 w-5 text-primary" />
-              <span className="font-mono text-sm">{project.stats.duration}</span>
+              <Layers className="h-5 w-5 text-primary" />
+              <span className="font-mono text-sm">{project.role}</span>
             </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Users className="h-5 w-5 text-primary" />
-              <span className="font-mono text-sm">{project.stats.team}</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Code className="h-5 w-5 text-primary" />
-              <span className="font-mono text-sm">{project.stats.lines} lines</span>
-            </div>
+            {project.duration && (
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <span className="font-mono text-sm">{project.duration}</span>
+              </div>
+            )}
           </div>
 
           {/* Action Buttons */}
           <div className="flex gap-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Live Demo
-            </Button>
-            <Button size="lg" variant="outline">
-              <Github className="mr-2 h-4 w-4" />
-              View Code
+            {project.liveUrl && (
+              <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Live Site
+                </a>
+              </Button>
+            )}
+            <Button size="lg" variant="outline" asChild>
+              <a href="https://github.com/Dagemgissila" target="_blank" rel="noopener noreferrer">
+                <Github className="mr-2 h-4 w-4" />
+                GitHub Profile
+              </a>
             </Button>
           </div>
         </div>

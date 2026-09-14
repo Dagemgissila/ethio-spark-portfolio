@@ -1,42 +1,22 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, Mail, Download, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import Magnetic from "@/components/Magnetic";
-import profileImage from "@/assets/profile.jpg";
-import nextLogo from "@/assets/skills/nextjs.svg";
-import laravelLogo from "@/assets/skills/laravel.svg";
-import expressLogo from "@/assets/skills/express.svg";
-import typescriptLogo from "@/assets/skills/typescript.svg";
-import reactLogo from "@/assets/skills/react.svg";
-import vueLogo from "@/assets/skills/vue.svg";
-import phpLogo from "@/assets/skills/php.svg";
-import pythonLogo from "@/assets/skills/python.svg";
-import gitLogo from "@/assets/skills/git.svg";
-import mysqlLogo from "@/assets/skills/mysql.svg";
 
-const technologies = ["Express.js", "Nest.js", "Laravel", "Next.js", "React.js"];
+const technologies = ["Next.js", "NestJS", "Node.js", "Laravel", "Docker & Kubernetes"];
 
-const floatingIcons = [
-  { src: nextLogo, alt: "Next.js", invert: true, top: "8%", left: "5%", delay: 0, duration: 4 },
-  { src: reactLogo, alt: "React", invert: false, top: "15%", left: "85%", delay: 0.5, duration: 5 },
-  { src: laravelLogo, alt: "Laravel", invert: false, top: "70%", left: "8%", delay: 1, duration: 4.5 },
-  { src: typescriptLogo, alt: "TypeScript", invert: false, top: "80%", left: "90%", delay: 1.5, duration: 3.5 },
-  { src: expressLogo, alt: "Express", invert: true, top: "35%", left: "3%", delay: 2, duration: 5.5 },
-  { src: vueLogo, alt: "Vue", invert: false, top: "25%", left: "92%", delay: 2.5, duration: 4.2 },
-  { src: phpLogo, alt: "PHP", invert: false, top: "55%", left: "95%", delay: 3, duration: 3.8 },
-  { src: pythonLogo, alt: "Python", invert: false, top: "90%", left: "15%", delay: 0.8, duration: 4.8 },
-  { src: gitLogo, alt: "Git", invert: false, top: "5%", left: "45%", delay: 1.2, duration: 5.2 },
-  { src: mysqlLogo, alt: "MySQL", invert: false, top: "88%", left: "75%", delay: 1.8, duration: 4.3 },
-  // Center area icons
-  { src: reactLogo, alt: "React", invert: false, top: "30%", left: "25%", delay: 0.3, duration: 4.6 },
-  { src: typescriptLogo, alt: "TypeScript", invert: false, top: "45%", left: "70%", delay: 0.7, duration: 5.1 },
-  { src: nextLogo, alt: "Next.js", invert: true, top: "60%", left: "30%", delay: 1.4, duration: 4.3 },
-  { src: laravelLogo, alt: "Laravel", invert: false, top: "20%", left: "60%", delay: 1.9, duration: 4.9 },
-  { src: expressLogo, alt: "Express", invert: true, top: "75%", left: "55%", delay: 2.2, duration: 5.3 },
-  { src: vueLogo, alt: "Vue", invert: false, top: "50%", left: "15%", delay: 2.8, duration: 4.1 },
-  { src: phpLogo, alt: "PHP", invert: false, top: "12%", left: "35%", delay: 0.4, duration: 4.7 },
-  { src: pythonLogo, alt: "Python", invert: false, top: "65%", left: "80%", delay: 1.1, duration: 5.4 },
+const stack = [
+  "Next.js",
+  "React.js",
+  "NestJS",
+  "Node.js",
+  "Laravel",
+  "Docker",
+  "Kubernetes",
+  "PostgreSQL",
+  "Redis",
+  "Argo CD",
 ];
 
 const Hero = () => {
@@ -45,267 +25,196 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTech((prev) => (prev + 1) % technologies.length);
-    }, 2000);
+    }, 2200);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
-      {/* Floating tech icons in background */}
-      {floatingIcons.map((icon, index) => (
-        <motion.div
-          key={index}
-          className="absolute z-0 opacity-20 dark:opacity-15"
-          style={{ top: icon.top, left: icon.left }}
-          animate={{
-            y: [0, -15, 0],
-            x: [0, 8, 0],
-            rotate: [0, 5, -5, 0],
-          }}
-          transition={{
-            duration: icon.duration,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: icon.delay,
-          }}
-        >
-          <img
-            src={icon.src}
-            alt={icon.alt}
-            className={`w-6 h-6 sm:w-8 sm:h-8 ${icon.invert ? "dark:invert" : ""}`}
-          />
-        </motion.div>
-      ))}
+    <section className="min-h-screen flex items-center px-4 sm:px-6 lg:px-12 pt-28 pb-16 relative overflow-hidden grid-overlay">
+      {/* Ambient glow */}
+      <div className="absolute -top-40 -right-32 w-[600px] h-[600px] rounded-full bg-primary/10 dark:bg-primary/15 blur-[120px]" />
+      <div className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full bg-primary/5 dark:bg-primary/10 blur-[120px]" />
 
-      {/* Subtle animated gradient mesh background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute -top-1/3 -left-1/3 w-[800px] h-[800px] bg-gradient-to-br from-muted/40 via-muted/20 to-transparent rounded-full blur-[120px]"
-          animate={{
-            x: [0, 150, 80, 0],
-            y: [0, 80, 150, 0],
-            scale: [1, 1.3, 1.1, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-1/3 -right-1/3 w-[700px] h-[700px] bg-gradient-to-tl from-muted/30 via-muted/15 to-transparent rounded-full blur-[120px]"
-          animate={{
-            x: [0, -120, -60, 0],
-            y: [0, -60, -120, 0],
-            scale: [1, 1.2, 1.3, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10 w-full">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left side - Text content */}
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="grid lg:grid-cols-[1.35fr_1fr] gap-8">
+          {/* Terminal window */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-left"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="rounded-xl border border-border bg-card shadow-2xl overflow-hidden"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="relative inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 mb-6"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-primary animate-pulse-ring" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-              </span>
-              <span className="text-primary font-medium text-sm font-mono">Available for work</span>
-            </motion.div>
+            {/* title bar */}
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-secondary/40">
+              <span className="w-2.5 h-2.5 rounded-full bg-muted-foreground/30" />
+              <span className="w-2.5 h-2.5 rounded-full bg-muted-foreground/30" />
+              <span className="w-2.5 h-2.5 rounded-full bg-muted-foreground/30" />
+              <span className="ml-3 font-mono text-xs text-muted-foreground">whoami.sh — zsh</span>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-2 leading-tight tracking-tight"
-            >
-              <span className="text-muted-foreground font-normal">Hi, I'm </span>
-              <span className="bg-gradient-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
+            <div className="p-6 sm:p-8 font-mono">
+              <div className="text-sm text-muted-foreground mb-2">
+                dagem@portfolio <span className="text-muted-foreground/50">~</span>{" "}
+                <span className="text-primary">%</span> whoami
+              </div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.6 }}
+                className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-1"
+              >
                 Dagem Gissila
-              </span>
-            </motion.h1>
+              </motion.h1>
+              <div className="text-primary font-medium mb-6 flex items-center gap-2 flex-wrap">
+                <span>// Fullstack &amp; Backend Developer ·</span>
+                <span className="inline-flex items-center min-w-[9rem]">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={currentTech}
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -10, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {technologies[currentTech]}
+                    </motion.span>
+                  </AnimatePresence>
+                  <span className="ml-0.5 w-[2px] h-4 bg-primary animate-blink" aria-hidden />
+                </span>
+              </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-6"
-            >
-              <p className="text-lg sm:text-xl md:text-2xl text-foreground font-semibold mb-2 font-display">
-                Full Stack Developer
+              <div className="text-sm text-muted-foreground mb-3">
+                dagem@portfolio <span className="text-muted-foreground/50">~</span>{" "}
+                <span className="text-primary">%</span> cat about.md
+              </div>
+              <p className="font-sans text-[15px] leading-relaxed text-muted-foreground max-w-xl mb-7">
+                Fullstack developer with three years building enterprise web applications and backend
+                services across <span className="text-foreground">Next.js, React, NestJS, Node.js and Laravel</span>.
+                Comfortable owning a feature end to end — API design, database performance, and shipping
+                it through <span className="text-foreground">Docker, Kubernetes and CI/CD</span>.
               </p>
-              <p className="text-muted-foreground text-sm md:text-base max-w-md leading-relaxed">
-                Building scalable web applications with modern technologies.
-                Passionate about clean code and exceptional user experiences.
-              </p>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex items-center gap-3 mb-8 flex-wrap font-mono"
-            >
-              <span className="text-sm text-muted-foreground">Specialized in</span>
-              <span className="inline-flex items-center text-primary font-semibold text-base md:text-lg bg-primary/10 px-3 py-1 rounded-lg border border-primary/20 min-w-[9rem]">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={currentTech}
-                    initial={{ y: 15, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -15, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+              <div className="text-sm text-muted-foreground mb-4">
+                dagem@portfolio <span className="text-muted-foreground/50">~</span>{" "}
+                <span className="text-primary">%</span> ./run --action=contact
+              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="flex flex-wrap gap-3"
+              >
+                <Magnetic strength={0.25}>
+                  <Button
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow font-sans"
+                    onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
                   >
-                    {technologies[currentTech]}
-                  </motion.span>
-                </AnimatePresence>
-                <span className="ml-0.5 w-[2px] h-4 bg-primary animate-blink" aria-hidden />
-              </span>
-            </motion.div>
+                    View Projects →
+                  </Button>
+                </Magnetic>
+                <Magnetic strength={0.25}>
+                  <Button variant="outline" className="border-border font-sans">
+                    <Download className="mr-2 h-4 w-4" />
+                    Download CV
+                  </Button>
+                </Magnetic>
+              </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-wrap gap-4 mb-8"
-            >
-              <Magnetic strength={0.3}>
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
-                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                >
-                  Get In Touch
-                </Button>
-              </Magnetic>
-              <Magnetic strength={0.3}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary/50 hover:bg-primary/10"
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download CV
-                </Button>
-              </Magnetic>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              className="flex gap-4"
-            >
-              <Magnetic strength={0.5}>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub profile"
-                  className="flex p-3 rounded-full bg-card hover:bg-primary/20 transition-colors duration-300 border border-border hover:border-primary/50"
-                >
-                  <Github className="h-6 w-6" />
-                </a>
-              </Magnetic>
-              <Magnetic strength={0.5}>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn profile"
-                  className="flex p-3 rounded-full bg-card hover:bg-primary/20 transition-colors duration-300 border border-border hover:border-primary/50"
-                >
-                  <Linkedin className="h-6 w-6" />
-                </a>
-              </Magnetic>
-              <Magnetic strength={0.5}>
-                <a
-                  href="mailto:dagemgisila@gmail.com"
-                  aria-label="Send an email"
-                  className="flex p-3 rounded-full bg-card hover:bg-primary/20 transition-colors duration-300 border border-border hover:border-primary/50"
-                >
-                  <Mail className="h-6 w-6" />
-                </a>
-              </Magnetic>
-            </motion.div>
+            {/* status bar */}
+            <div className="flex items-center justify-between px-4 py-2.5 border-t border-border bg-secondary/30 font-mono text-xs text-muted-foreground">
+              <div className="flex items-center gap-4">
+                <span className="flex items-center gap-1.5">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 animate-pulse-ring" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                  </span>
+                  available for work
+                </span>
+                <span>main*</span>
+              </div>
+              <span>Addis Ababa, ET</span>
+            </div>
           </motion.div>
 
-          {/* Right side - Profile Image */}
+          {/* Right column */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex items-center justify-center mt-12 md:mt-0"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="flex flex-col gap-5"
           >
-            <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] mx-auto">
-              {/* Animated gradient background */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-primary rounded-full blur-3xl opacity-30"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 180, 360]
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
+            {/* current role */}
+            <div className="rounded-xl border border-border bg-card p-6">
+              <div className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase mb-2">
+                current role
+              </div>
+              <div className="text-lg font-semibold text-foreground">Fullstack Developer</div>
+              <div className="text-primary font-medium">Safaricom Ethiopia</div>
+              <div className="font-mono text-xs text-muted-foreground mt-1.5">05/2026 — Present</div>
+            </div>
 
-              {/* Rotating dashed ring for a bit of engineered detail */}
-              <motion.div
-                className="absolute -inset-3 rounded-full border-2 border-dashed border-primary/25"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              />
+            {/* stack */}
+            <div className="rounded-xl border border-border bg-card p-6 flex-1">
+              <div className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase mb-3">
+                $ tech --stack
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="font-mono text-xs px-2.5 py-1.5 rounded-md bg-secondary/60 border border-border text-foreground/80"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-              {/* Main profile image */}
-              <motion.div
-                className="relative z-10 w-full h-full"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 250, damping: 18 }}
-              >
-                <img
-                  src={profileImage}
-                  alt="Dagem Gissila - Full Stack Developer"
-                  className="w-full h-full rounded-full object-cover shadow-2xl border-4 border-primary/20"
-                />
-              </motion.div>
+            {/* links */}
+            <div className="rounded-xl border border-border bg-card p-6 font-mono text-sm">
+              <div className="flex items-center justify-between py-1.5">
+                <Magnetic strength={0.2}>
+                  <a
+                    href="https://github.com/Dagemgissila"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Github className="h-4 w-4" /> github
+                  </a>
+                </Magnetic>
+                <span className="text-primary">Dagemgissila</span>
+              </div>
+              <div className="flex items-center justify-between py-1.5">
+                <Magnetic strength={0.2}>
+                  <a
+                    href="https://www.linkedin.com/in/dagem-gissila-999987243/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Linkedin className="h-4 w-4" /> linkedin
+                  </a>
+                </Magnetic>
+                <span className="text-primary">dagem-gissila</span>
+              </div>
+              <div className="flex items-center justify-between py-1.5">
+                <Magnetic strength={0.2}>
+                  <a
+                    href="mailto:dagemgisila@gmail.com"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Mail className="h-4 w-4" /> email
+                  </a>
+                </Magnetic>
+                <span className="text-primary">dagemgisila@gmail.com</span>
+              </div>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center gap-2 text-muted-foreground">
-          <span className="text-sm">Scroll Down</span>
-          <ChevronDown className="h-6 w-6 animate-bounce" />
-        </div>
-      </motion.div>
     </section>
   );
 };

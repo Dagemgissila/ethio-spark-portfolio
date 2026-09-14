@@ -46,14 +46,14 @@ const Navigation = () => {
           <Magnetic strength={0.4}>
             <a
               href="#"
-              className="flex-shrink-0 font-display text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent"
+              className="flex-shrink-0 font-mono text-lg font-semibold text-foreground"
             >
-              DG<span className="text-primary/60">.</span>
+              <span className="text-primary">~/</span>dagem-gissila
             </a>
           </Magnetic>
 
           <div className="hidden md:flex md:items-center md:gap-2">
-            <div className="flex items-baseline gap-1">
+            <div className="flex items-baseline gap-1 font-mono">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.name}
@@ -62,7 +62,7 @@ const Navigation = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 * index }}
                   className={cn(
-                    "relative px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                    "relative px-3 py-2 rounded-md text-sm transition-colors lowercase",
                     isActive(item.id) ? "text-primary" : "text-muted-foreground hover:text-primary"
                   )}
                 >
@@ -114,7 +114,7 @@ const Navigation = () => {
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border overflow-hidden"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-2 pt-2 pb-3 space-y-1 font-mono">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.name}
@@ -124,7 +124,7 @@ const Navigation = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.04 }}
                   className={cn(
-                    "block px-3 py-2 rounded-md text-base font-medium transition-colors",
+                    "block px-3 py-2 rounded-md text-base lowercase transition-colors",
                     isActive(item.id) ? "text-primary bg-primary/10" : "text-muted-foreground hover:text-primary"
                   )}
                 >
