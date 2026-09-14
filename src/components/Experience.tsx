@@ -67,7 +67,7 @@ const experiences = [
 const Experience = () => {
   return (
     <section className="py-20 px-4 relative overflow-hidden" id="experience">
-      <div className="max-w-3xl mx-auto relative">
+      <div className="max-w-6xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,36 +86,40 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[5px] top-2 bottom-2 w-px bg-border" aria-hidden />
-
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={exp.company}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="relative pl-8"
-              >
-                {/* Timeline dot */}
+        <div className="divide-y divide-border">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={exp.company}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="grid md:grid-cols-[220px_1fr] gap-4 md:gap-12 py-10 first:pt-0 last:pb-0"
+            >
+              {/* Left — date rail */}
+              <div className="md:sticky md:top-28 md:self-start flex md:flex-col items-center md:items-start gap-3 md:gap-2">
                 <span
-                  className={`absolute left-0 top-1.5 w-[11px] h-[11px] rounded-full border-2 ${
+                  className={`w-2.5 h-2.5 rounded-full border-2 flex-shrink-0 ${
                     exp.current
                       ? "bg-primary border-primary shadow-glow"
                       : "bg-background border-muted-foreground/40"
                   }`}
                   aria-hidden
                 />
-
-                <div className="font-mono text-xs text-muted-foreground uppercase tracking-wide mb-1.5">
+                <div className="font-mono text-sm text-muted-foreground">
                   {exp.startDate} — {exp.endDate}
                 </div>
+                {exp.current && (
+                  <span className="font-mono text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                    Current
+                  </span>
+                )}
+              </div>
 
-                <h3 className="text-lg font-bold text-foreground mb-0.5">{exp.title}</h3>
-                <div className="flex items-center gap-2 text-sm mb-3 flex-wrap">
+              {/* Right — content */}
+              <div className="md:border-l md:border-border md:pl-10">
+                <h3 className="text-xl font-bold text-foreground mb-0.5">{exp.title}</h3>
+                <div className="flex items-center gap-2 text-sm mb-4 flex-wrap">
                   <span className="text-primary font-medium">{exp.company}</span>
                   <span className="text-muted-foreground/50">·</span>
                   <span className="text-muted-foreground flex items-center gap-1">
@@ -124,11 +128,11 @@ const Experience = () => {
                   </span>
                 </div>
 
-                <p className="text-muted-foreground leading-relaxed mb-4 max-w-xl">
+                <p className="text-muted-foreground leading-relaxed mb-4 max-w-2xl">
                   {exp.description}
                 </p>
 
-                <ul className="space-y-1.5">
+                <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-1.5">
                   {exp.achievements.map((achievement) => (
                     <li key={achievement} className="flex items-start gap-2 text-sm text-foreground/80">
                       <span className="text-primary mt-1.5 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
@@ -136,9 +140,9 @@ const Experience = () => {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

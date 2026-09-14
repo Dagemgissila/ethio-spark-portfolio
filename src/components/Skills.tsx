@@ -115,13 +115,25 @@ const Skills = () => {
                 three years building enterprise web applications and backend services across
                 <span className="text-foreground font-medium"> Next.js</span>, <span className="text-foreground font-medium">React</span>,
                 <span className="text-foreground font-medium"> NestJS</span>, <span className="text-foreground font-medium">Node.js</span> and
-                <span className="text-foreground font-medium"> Laravel</span>.
+                <span className="text-foreground font-medium"> Laravel</span>. I'm comfortable owning a feature end
+                to end — from API design and database performance to shipping it through
+                <span className="text-foreground font-medium"> Docker</span>,
+                <span className="text-foreground font-medium"> Kubernetes</span> and CI/CD pipelines.
               </p>
               <p className="text-base md:text-lg">
-                I'm comfortable owning a feature end to end — from API design and database performance to
-                shipping it through <span className="text-foreground font-medium">Docker</span>,
-                <span className="text-foreground font-medium"> Kubernetes</span> and CI/CD pipelines. Currently
-                building internal enterprise systems at Safaricom Ethiopia.
+                That range comes from moving between different kinds of teams: enterprise systems at
+                <span className="text-foreground font-medium"> Safaricom Ethiopia</span>, full-stack product work at
+                <span className="text-foreground font-medium"> Ashewa Technologies Solutions</span>, freelance
+                delivery for clients on tight timelines, and a government
+                <span className="text-foreground font-medium"> Wildlife Crime Database System</span> built at
+                Synapse Software Solutions. Each one asked for a different kind of rigor, from real-time
+                systems to secure, auditable data handling.
+              </p>
+              <p className="text-base md:text-lg">
+                Day to day I care about modular architecture, meaningful code review, and CI/CD I can trust —
+                not just code that ships, but code a team can keep shipping. That foundation started with a
+                <span className="text-foreground font-medium"> B.Sc. in Information Technology</span> from
+                Arba Minch University, and it's grown through every production system since.
               </p>
             </div>
           </motion.div>

@@ -8,9 +8,17 @@ import profileImage from "@/assets/profile.jpg";
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden grid-overlay">
-      {/* Ambient glow */}
-      <div className="absolute -top-40 -right-32 w-[600px] h-[600px] rounded-full bg-primary/10 dark:bg-primary/15 blur-[120px]" />
-      <div className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full bg-primary/5 dark:bg-primary/10 blur-[120px]" />
+      {/* Ambient glow — slow drifting motion */}
+      <motion.div
+        className="absolute -top-40 -right-32 w-[600px] h-[600px] rounded-full bg-primary/10 dark:bg-primary/15 blur-[120px]"
+        animate={{ x: [0, -60, 30, 0], y: [0, 50, 90, 0], scale: [1, 1.15, 1.05, 1] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full bg-primary/5 dark:bg-primary/10 blur-[120px]"
+        animate={{ x: [0, 70, -20, 0], y: [0, -40, -80, 0], scale: [1, 1.1, 1.2, 1] }}
+        transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       <FloatingTechBackground />
 
