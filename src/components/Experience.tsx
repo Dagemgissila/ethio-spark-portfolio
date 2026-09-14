@@ -88,7 +88,7 @@ const Experience = () => {
           >
             Career Path
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             <span className="text-foreground">Professional</span>{" "}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Journey
