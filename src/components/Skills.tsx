@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Server, Database, Cog, Code2 } from "lucide-react";
+import TiltCard from "@/components/TiltCard";
 
 // Tech stack data organized by category
 const skillCategories = [
@@ -143,26 +144,27 @@ const Skills = () => {
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
               className="relative group"
             >
+              <TiltCard maxTilt={8}>
               <div className="bg-card rounded-2xl p-6 border border-border hover:border-primary/30 transition-all duration-300 h-full relative overflow-hidden">
                 {/* Decorative blob */}
                 <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${category.color} opacity-20 rounded-full blur-2xl group-hover:opacity-30 transition-opacity`} />
-                
+
                 <div className="relative z-10">
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center mb-4`}>
                     <category.icon className="w-6 h-6 text-white" />
                   </div>
-                  
-                  <h4 className="text-lg font-bold text-foreground mb-4">{category.title}</h4>
-                  
+
+                  <h4 className="font-display text-lg font-bold text-foreground mb-4">{category.title}</h4>
+
                   <div className="space-y-3">
                     {category.skills.map((skill) => (
-                      <div 
+                      <div
                         key={skill.name}
                         className="flex items-center gap-3 group/skill"
                       >
                         <div className="w-8 h-8 rounded-lg bg-background/50 p-1.5 group-hover/skill:scale-110 transition-transform">
-                          <img 
-                            src={skill.icon} 
+                          <img
+                            src={skill.icon}
                             alt={skill.name}
                             className="w-full h-full object-contain dark:brightness-110"
                           />
@@ -175,6 +177,7 @@ const Skills = () => {
                   </div>
                 </div>
               </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

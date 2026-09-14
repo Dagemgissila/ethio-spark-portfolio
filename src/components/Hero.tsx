@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, Download, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import Magnetic from "@/components/Magnetic";
 import profileImage from "@/assets/profile.jpg";
 import nextLogo from "@/assets/skills/nextjs.svg";
 import laravelLogo from "@/assets/skills/laravel.svg";
@@ -121,20 +122,23 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 mb-6"
+              className="relative inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 mb-6"
             >
-              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span className="text-primary font-medium text-sm">Available for work</span>
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-primary animate-pulse-ring" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+              </span>
+              <span className="text-primary font-medium text-sm font-mono">Available for work</span>
             </motion.div>
-            
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight"
+              className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-2 leading-tight tracking-tight"
             >
               <span className="text-muted-foreground font-normal">Hi, I'm </span>
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
                 Dagem Gissila
               </span>
             </motion.h1>
@@ -145,11 +149,11 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mb-6"
             >
-              <p className="text-lg sm:text-xl md:text-2xl text-foreground font-semibold mb-2">
+              <p className="text-lg sm:text-xl md:text-2xl text-foreground font-semibold mb-2 font-display">
                 Full Stack Developer
               </p>
-              <p className="text-muted-foreground text-sm md:text-base max-w-md">
-                Building scalable web applications with modern technologies. 
+              <p className="text-muted-foreground text-sm md:text-base max-w-md leading-relaxed">
+                Building scalable web applications with modern technologies.
                 Passionate about clean code and exceptional user experiences.
               </p>
             </motion.div>
@@ -158,21 +162,23 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex items-center gap-3 mb-8 flex-wrap"
+              className="flex items-center gap-3 mb-8 flex-wrap font-mono"
             >
               <span className="text-sm text-muted-foreground">Specialized in</span>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentTech}
-                  initial={{ y: 15, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -15, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-primary font-bold text-base md:text-lg bg-primary/10 px-3 py-1 rounded-lg border border-primary/20"
-                >
-                  {technologies[currentTech]}
-                </motion.span>
-              </AnimatePresence>
+              <span className="inline-flex items-center text-primary font-semibold text-base md:text-lg bg-primary/10 px-3 py-1 rounded-lg border border-primary/20 min-w-[9rem]">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentTech}
+                    initial={{ y: 15, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -15, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {technologies[currentTech]}
+                  </motion.span>
+                </AnimatePresence>
+                <span className="ml-0.5 w-[2px] h-4 bg-primary animate-blink" aria-hidden />
+              </span>
             </motion.div>
 
             <motion.div
@@ -181,21 +187,25 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-4 mb-8"
             >
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              >
-                Get In Touch
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-primary/50 hover:bg-primary/10"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
-              </Button>
+              <Magnetic strength={0.3}>
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                >
+                  Get In Touch
+                </Button>
+              </Magnetic>
+              <Magnetic strength={0.3}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary/50 hover:bg-primary/10"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download CV
+                </Button>
+              </Magnetic>
             </motion.div>
 
             <motion.div
@@ -204,28 +214,37 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 1 }}
               className="flex gap-4"
             >
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-card hover:bg-primary/20 transition-all duration-300 hover:scale-110 border border-border hover:border-primary/50"
-              >
-                <Github className="h-6 w-6" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-card hover:bg-primary/20 transition-all duration-300 hover:scale-110 border border-border hover:border-primary/50"
-              >
-                <Linkedin className="h-6 w-6" />
-              </a>
-              <a
-                href="mailto:dagem@example.com"
-                className="p-3 rounded-full bg-card hover:bg-primary/20 transition-all duration-300 hover:scale-110 border border-border hover:border-primary/50"
-              >
-                <Mail className="h-6 w-6" />
-              </a>
+              <Magnetic strength={0.5}>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub profile"
+                  className="flex p-3 rounded-full bg-card hover:bg-primary/20 transition-colors duration-300 border border-border hover:border-primary/50"
+                >
+                  <Github className="h-6 w-6" />
+                </a>
+              </Magnetic>
+              <Magnetic strength={0.5}>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn profile"
+                  className="flex p-3 rounded-full bg-card hover:bg-primary/20 transition-colors duration-300 border border-border hover:border-primary/50"
+                >
+                  <Linkedin className="h-6 w-6" />
+                </a>
+              </Magnetic>
+              <Magnetic strength={0.5}>
+                <a
+                  href="mailto:dagemgisila@gmail.com"
+                  aria-label="Send an email"
+                  className="flex p-3 rounded-full bg-card hover:bg-primary/20 transition-colors duration-300 border border-border hover:border-primary/50"
+                >
+                  <Mail className="h-6 w-6" />
+                </a>
+              </Magnetic>
             </motion.div>
           </motion.div>
 
@@ -238,27 +257,38 @@ const Hero = () => {
           >
             <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] mx-auto">
               {/* Animated gradient background */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-gradient-primary rounded-full blur-3xl opacity-30"
-                animate={{ 
+                animate={{
                   scale: [1, 1.1, 1],
                   rotate: [0, 180, 360]
                 }}
-                transition={{ 
+                transition={{
                   duration: 20,
                   repeat: Infinity,
                   ease: "linear"
                 }}
               />
-              
+
+              {/* Rotating dashed ring for a bit of engineered detail */}
+              <motion.div
+                className="absolute -inset-3 rounded-full border-2 border-dashed border-primary/25"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+              />
+
               {/* Main profile image */}
-              <div className="relative z-10 w-full h-full">
-                <img 
-                  src={profileImage} 
+              <motion.div
+                className="relative z-10 w-full h-full"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 250, damping: 18 }}
+              >
+                <img
+                  src={profileImage}
                   alt="Dagem Gissila - Full Stack Developer"
                   className="w-full h-full rounded-full object-cover shadow-2xl border-4 border-primary/20"
                 />
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>

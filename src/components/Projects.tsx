@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, ArrowRight, Check, Layers, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import TiltCard from "@/components/TiltCard";
 import {
   Dialog,
   DialogContent,
@@ -96,7 +97,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="py-20 px-4 relative" id="projects">
+    <section className="py-20 px-4 relative overflow-hidden" id="projects">
       {/* Decorative elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
@@ -134,7 +135,8 @@ const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className="overflow-hidden bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow group h-full flex flex-col">
+              <TiltCard maxTilt={6} className="group h-full">
+              <Card className="overflow-hidden bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow h-full flex flex-col">
                 <div className="relative overflow-hidden h-48">
                   <img
                     src={project.images[0]}
@@ -191,6 +193,7 @@ const Projects = () => {
                   </div>
                 </div>
               </Card>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
