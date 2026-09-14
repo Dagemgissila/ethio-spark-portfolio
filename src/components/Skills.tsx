@@ -46,6 +46,7 @@ const skillCategories: { title: string; icon: typeof Code2; color: string; skill
     color: "from-emerald-500 to-teal-400",
     skills: [
       { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+      { name: "Prisma" },
       { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
       { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
       { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
@@ -111,29 +112,30 @@ const Skills = () => {
             </h2>
             <div className="space-y-5 text-muted-foreground leading-relaxed">
               <p className="text-base md:text-lg">
-                I'm a <span className="text-foreground font-semibold">Fullstack &amp; Backend Developer</span> with
-                three years building enterprise web applications and backend services across
-                <span className="text-foreground font-medium"> Next.js</span>, <span className="text-foreground font-medium">React</span>,
-                <span className="text-foreground font-medium"> NestJS</span>, <span className="text-foreground font-medium">Node.js</span> and
-                <span className="text-foreground font-medium"> Laravel</span>. I'm comfortable owning a feature end
-                to end — from API design and database performance to shipping it through
+                I'm a <span className="text-foreground font-semibold">Full-Stack Developer</span> specializing in
+                <span className="text-foreground font-medium"> TypeScript</span>,
+                <span className="text-foreground font-medium"> Node.js</span>,
+                <span className="text-foreground font-medium"> NestJS</span>,
+                <span className="text-foreground font-medium"> React</span>, and
+                <span className="text-foreground font-medium"> Next.js</span>, with a strong focus on backend
+                development and scalable web applications.
+              </p>
+              <p className="text-base md:text-lg">
+                I enjoy building reliable APIs, business logic, authentication systems, database-driven
+                applications, and third-party integrations. I also have hands-on experience with
+                <span className="text-foreground font-medium"> PostgreSQL</span>,
+                <span className="text-foreground font-medium"> Prisma</span>,
+                <span className="text-foreground font-medium"> Redis</span>,
                 <span className="text-foreground font-medium"> Docker</span>,
-                <span className="text-foreground font-medium"> Kubernetes</span> and CI/CD pipelines.
+                <span className="text-foreground font-medium"> Kubernetes</span>,
+                <span className="text-foreground font-medium"> Helm</span>,
+                <span className="text-foreground font-medium"> Jenkins</span>, and
+                <span className="text-foreground font-medium"> Argo CD</span>, giving me experience across both
+                software development and deployment.
               </p>
               <p className="text-base md:text-lg">
-                That range comes from moving between different kinds of teams: enterprise systems at
-                <span className="text-foreground font-medium"> Safaricom Ethiopia</span>, full-stack product work at
-                <span className="text-foreground font-medium"> Ashewa Technologies Solutions</span>, freelance
-                delivery for clients on tight timelines, and a government
-                <span className="text-foreground font-medium"> Wildlife Crime Database System</span> built at
-                Synapse Software Solutions. Each one asked for a different kind of rigor, from real-time
-                systems to secure, auditable data handling.
-              </p>
-              <p className="text-base md:text-lg">
-                Day to day I care about modular architecture, meaningful code review, and CI/CD I can trust —
-                not just code that ships, but code a team can keep shipping. That foundation started with a
-                <span className="text-foreground font-medium"> B.Sc. in Information Technology</span> from
-                Arba Minch University, and it's grown through every production system since.
+                I'm passionate about backend engineering, system design, DevOps, and continuous learning, and
+                I'm always looking for better ways to build clean, maintainable, and production-ready software.
               </p>
             </div>
           </motion.div>
