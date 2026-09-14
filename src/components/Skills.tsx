@@ -1,8 +1,20 @@
 import { motion } from "framer-motion";
-import { Server, Database, Cog, Code2 } from "lucide-react";
+import { Server, Database, Cog, Code2, MapPin, Briefcase, Github, Linkedin } from "lucide-react";
 import TiltCard from "@/components/TiltCard";
+import Magnetic from "@/components/Magnetic";
 
 type Skill = { name: string; icon?: string };
+
+const coreStack = [
+  "Next.js",
+  "React.js",
+  "NestJS",
+  "Node.js",
+  "Laravel",
+  "Docker",
+  "Kubernetes",
+  "PostgreSQL",
+];
 
 // Tech stack data organized by category — mirrors the Skills section of the CV
 const skillCategories: { title: string; icon: typeof Code2; color: string; skills: Skill[] }[] = [
@@ -83,39 +95,105 @@ const Skills = () => {
       <div className="absolute bottom-20 left-10 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
 
       {/* About Me Section */}
-      <div className="max-w-7xl mx-auto px-4 mb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
-            ABOUT ME
-          </span>
-          <h2 className="text-4xl md:text-6xl font-black mb-8 font-display tracking-tight">
-            <span className="text-foreground">Who</span>{" "}
-            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              Am I?
+      <div className="max-w-7xl mx-auto px-4 mb-24">
+        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-16 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
+              About Me
             </span>
-          </h2>
-          <div className="max-w-3xl mx-auto space-y-5 text-muted-foreground leading-relaxed">
-            <p className="text-base md:text-lg">
-              I'm a <span className="text-primary font-semibold">Fullstack &amp; Backend Developer</span> with three
-              years building enterprise web applications and backend services across
-              <span className="text-foreground font-medium"> Next.js</span>, <span className="text-foreground font-medium">React</span>,
-              <span className="text-foreground font-medium"> NestJS</span>, <span className="text-foreground font-medium">Node.js</span> and
-              <span className="text-foreground font-medium"> Laravel</span>.
-            </p>
-            <p className="text-base md:text-lg">
-              I'm comfortable owning a feature end to end — from API design and database performance to
-              shipping it through <span className="text-foreground font-medium">Docker</span>,
-              <span className="text-foreground font-medium"> Kubernetes</span> and CI/CD pipelines. Currently building
-              internal enterprise systems at Safaricom Ethiopia.
-            </p>
-          </div>
-        </motion.div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-display tracking-tight text-foreground">
+              Who I Am
+            </h2>
+            <div className="space-y-5 text-muted-foreground leading-relaxed">
+              <p className="text-base md:text-lg">
+                I'm a <span className="text-foreground font-semibold">Fullstack &amp; Backend Developer</span> with
+                three years building enterprise web applications and backend services across
+                <span className="text-foreground font-medium"> Next.js</span>, <span className="text-foreground font-medium">React</span>,
+                <span className="text-foreground font-medium"> NestJS</span>, <span className="text-foreground font-medium">Node.js</span> and
+                <span className="text-foreground font-medium"> Laravel</span>.
+              </p>
+              <p className="text-base md:text-lg">
+                I'm comfortable owning a feature end to end — from API design and database performance to
+                shipping it through <span className="text-foreground font-medium">Docker</span>,
+                <span className="text-foreground font-medium"> Kubernetes</span> and CI/CD pipelines. Currently
+                building internal enterprise systems at Safaricom Ethiopia.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* At a glance */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="rounded-xl border border-border bg-card p-6 sm:p-7"
+          >
+            <div className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase mb-5">
+              At a Glance
+            </div>
+
+            <div className="flex items-start gap-3 mb-5">
+              <Briefcase className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+              <div>
+                <div className="text-sm font-semibold text-foreground">Fullstack Developer</div>
+                <div className="text-sm text-primary">Safaricom Ethiopia</div>
+                <div className="font-mono text-xs text-muted-foreground mt-0.5">May 2026 — Present</div>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 mb-6">
+              <MapPin className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+              <div className="text-sm text-foreground">Addis Ababa, Ethiopia</div>
+            </div>
+
+            <div className="h-px bg-border mb-6" />
+
+            <div className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase mb-3">
+              Core Stack
+            </div>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {coreStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="font-mono text-xs px-2.5 py-1.5 rounded-md bg-secondary/60 border border-border text-foreground/80"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Magnetic strength={0.35}>
+                <a
+                  href="https://github.com/Dagemgissila"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub profile"
+                  className="flex p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-secondary/60 transition-colors"
+                >
+                  <Github className="h-4 w-4" />
+                </a>
+              </Magnetic>
+              <Magnetic strength={0.35}>
+                <a
+                  href="https://www.linkedin.com/in/dagem-gissila-999987243/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn profile"
+                  className="flex p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-secondary/60 transition-colors"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+              </Magnetic>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Technical Skills Section */}
