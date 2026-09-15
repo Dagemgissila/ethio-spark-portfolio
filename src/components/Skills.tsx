@@ -107,7 +107,7 @@ const Skills = () => {
             <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
               About Me
             </span>
-            <h2 className="text-2xl md:text-5xl font-bold mb-6 font-display tracking-tight text-foreground">
+            <h2 className="text-xl md:text-4xl font-bold mb-6 font-display tracking-tight text-foreground">
               Who I Am
             </h2>
             <div className="space-y-5 text-muted-foreground leading-relaxed">
