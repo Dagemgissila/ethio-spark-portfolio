@@ -7,7 +7,7 @@ import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden grid-overlay">
+    <section className="min-h-screen flex items-center justify-center px-4 pt-28 pb-16 relative overflow-hidden grid-overlay">
       {/* Ambient glow — slow drifting motion */}
       <motion.div
         className="absolute -top-40 -right-32 w-[600px] h-[600px] rounded-full bg-primary/10 dark:bg-primary/15 blur-[120px]"

@@ -19,7 +19,7 @@ const icons = [
 const FloatingTechBackground = () => {
   return (
     <div
-      className="absolute inset-0 z-0 pointer-events-none"
+      className="hidden sm:block absolute inset-0 z-0 pointer-events-none"
       style={{ perspective: "1000px" }}
       aria-hidden
     >
