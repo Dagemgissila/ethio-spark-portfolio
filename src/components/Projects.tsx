@@ -160,18 +160,18 @@ const Projects = () => {
                 </div>
                 
                 <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="font-display text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-muted-foreground mb-4 flex-1 line-clamp-3">
                     {project.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20"
+                        className="font-mono text-[11px] tracking-wide px-2.5 py-1 rounded-md bg-primary/10 text-primary border border-primary/20"
                       >
                         {tech}
                       </span>
@@ -209,7 +209,7 @@ const Projects = () => {
 
       {/* Project Detail Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card/95 backdrop-blur-xl border-border p-0">
+        <DialogContent className="max-w-5xl w-[95vw] max-h-[88vh] md:h-[620px] overflow-y-auto md:overflow-hidden bg-card/95 backdrop-blur-xl border-border p-0">
           <AnimatePresence>
             {selectedProject && (
               <motion.div
@@ -217,109 +217,117 @@ const Projects = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
+                className="grid md:grid-cols-2 md:h-full"
               >
-                {/* Image Gallery */}
-                <div className="relative h-72 md:h-80 overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={currentImageIndex}
-                      src={selectedProject.images[currentImageIndex]}
-                      alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                      className="w-full h-full object-cover"
-                      initial={{ opacity: 0, x: 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -50 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </AnimatePresence>
-                  
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-                  
-                  {/* Navigation arrows */}
-                  <button
-                    onClick={prevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={nextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
+                {/* Left — image gallery */}
+                <div className="relative bg-secondary/30 flex flex-col md:h-full">
+                  <div className="relative h-64 md:h-auto md:flex-1 overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={currentImageIndex}
+                        src={selectedProject.images[currentImageIndex]}
+                        alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -50 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </AnimatePresence>
 
-                  {/* Image indicators */}
-                  <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
-                    {selectedProject.images.map((_, idx) => (
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+                    {/* Navigation arrows */}
+                    <button
+                      onClick={prevImage}
+                      aria-label="Previous image"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      aria-label="Next image"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+
+                    {/* Image indicators */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {selectedProject.images.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentImageIndex(idx)}
+                          aria-label={`Show image ${idx + 1}`}
+                          className={`h-2 rounded-full transition-all ${
+                            idx === currentImageIndex
+                              ? "bg-primary w-6"
+                              : "bg-white/50 hover:bg-white/80 w-2"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Thumbnail strip */}
+                  <div className="flex gap-2 p-3 flex-shrink-0 bg-secondary/30 border-t border-border overflow-x-auto">
+                    {selectedProject.images.map((img, idx) => (
                       <button
                         key={idx}
                         onClick={() => setCurrentImageIndex(idx)}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          idx === currentImageIndex 
-                            ? "bg-primary w-6" 
-                            : "bg-foreground/30 hover:bg-foreground/50"
+                        className={`flex-shrink-0 w-16 h-12 rounded-md overflow-hidden border-2 transition-all ${
+                          idx === currentImageIndex
+                            ? "border-primary"
+                            : "border-transparent opacity-60 hover:opacity-100"
                         }`}
-                      />
+                      >
+                        <img src={img} alt="" className="w-full h-full object-cover" />
+                      </button>
                     ))}
                   </div>
+                </div>
 
-                  {/* Title overlay */}
-                  <div className="absolute bottom-4 left-6 right-6">
-                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                {/* Right — project info */}
+                <div className="p-6 sm:p-8 md:h-full md:overflow-y-auto space-y-6">
+                  <div>
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3 pr-8">
                       {selectedProject.title}
                     </h2>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 text-xs rounded-full bg-primary/80 text-primary-foreground backdrop-blur-sm font-medium"
+                          className="font-mono text-[11px] tracking-wide px-2.5 py-1 rounded-md bg-primary/10 text-primary border border-primary/20"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
                   </div>
-                </div>
 
-                {/* Thumbnail strip */}
-                <div className="flex gap-2 px-6 py-3 bg-secondary/30 overflow-x-auto">
-                  {selectedProject.images.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentImageIndex(idx)}
-                      className={`flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-all ${
-                        idx === currentImageIndex 
-                          ? "border-primary" 
-                          : "border-transparent opacity-60 hover:opacity-100"
-                      }`}
-                    >
-                      <img src={img} alt="" className="w-full h-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-
-                {/* Project Info */}
-                <div className="p-6 space-y-6">
                   {/* Role & Duration */}
-                  <div className="flex gap-4 flex-wrap">
-                    {selectedProject.role && (
-                      <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
-                        <Layers className="w-4 h-4 text-primary" />
-                        <span className="text-sm text-foreground font-medium">{selectedProject.role}</span>
-                      </div>
-                    )}
-                    {selectedProject.duration && (
-                      <div className="flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg">
-                        <span className="text-sm text-foreground">Duration: <strong>{selectedProject.duration}</strong></span>
-                      </div>
-                    )}
-                  </div>
+                  {(selectedProject.role || selectedProject.duration) && (
+                    <div className="flex gap-3 flex-wrap">
+                      {selectedProject.role && (
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-lg">
+                          <Layers className="w-3.5 h-3.5 text-primary" />
+                          <span className="text-sm text-foreground font-medium">{selectedProject.role}</span>
+                        </div>
+                      )}
+                      {selectedProject.duration && (
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-secondary rounded-lg">
+                          <span className="font-mono text-xs text-foreground">{selectedProject.duration}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
 
                   {/* Description */}
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">About the Project</h3>
+                    <h3 className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase mb-2">
+                      About the Project
+                    </h3>
                     <p className="text-muted-foreground leading-relaxed">
                       {selectedProject.description}
                     </p>
@@ -327,17 +335,19 @@ const Projects = () => {
 
                   {/* Features */}
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-3">Key Features</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <h3 className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase mb-3">
+                      Key Features
+                    </h3>
+                    <div className="space-y-2">
                       {selectedProject.features.map((feature, index) => (
                         <motion.div
                           key={feature}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          className="flex items-center gap-3 p-3 bg-secondary/50 rounded-lg"
+                          transition={{ delay: index * 0.08 }}
+                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-secondary/50 transition-colors"
                         >
-                          <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                          <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-foreground">{feature}</span>
                         </motion.div>
                       ))}
