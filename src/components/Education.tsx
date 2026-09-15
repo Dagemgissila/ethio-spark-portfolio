@@ -60,10 +60,10 @@ const Education = () => {
           <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
             Background
           </span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 tracking-tight text-foreground">
+          <h2 className="font-display text-2xl md:text-5xl font-bold mb-4 tracking-tight text-foreground">
             Education &amp; Certificates
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base md:text-lg">
             Academic background and continued learning
           </p>
         </motion.div>

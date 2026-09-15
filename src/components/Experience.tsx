@@ -78,10 +78,10 @@ const Experience = () => {
           <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
             Career Path
           </span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 tracking-tight text-foreground">
+          <h2 className="font-display text-2xl md:text-5xl font-bold mb-4 tracking-tight text-foreground">
             Professional Journey
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base md:text-lg">
             Three years of building production systems
           </p>
         </motion.div>

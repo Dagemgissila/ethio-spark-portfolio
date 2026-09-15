@@ -16,13 +16,13 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 tracking-tight">
             <span className="text-foreground">Get In</span>{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
               Touch
             </span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base md:text-lg">
             Let's work together on your next project
           </p>
         </motion.div>

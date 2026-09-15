@@ -123,10 +123,10 @@ const Projects = () => {
           <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
             My Work
           </span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 tracking-tight text-foreground">
+          <h2 className="font-display text-2xl md:text-5xl font-bold mb-4 tracking-tight text-foreground">
             Featured Projects
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
             A selection of production systems I've designed, built and shipped
           </p>
         </motion.div>
@@ -291,7 +291,7 @@ const Projects = () => {
                 {/* Right — project info */}
                 <div className="p-6 sm:p-8 md:h-full md:overflow-y-auto space-y-6">
                   <div>
-                    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3 pr-8">
+                    <h2 className="font-display text-xl md:text-3xl font-bold text-foreground mb-3 pr-8">
                       {selectedProject.title}
                     </h2>
                     <div className="flex flex-wrap gap-2">

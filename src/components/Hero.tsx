@@ -43,7 +43,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.7 }}
-              className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-4"
+              className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground mb-4"
             >
               Dagem Gissila
             </motion.h1>
@@ -52,7 +52,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="text-lg sm:text-xl font-medium text-primary mb-5"
+              className="text-base sm:text-lg lg:text-xl font-medium text-primary mb-5"
             >
               Fullstack &amp; Backend Developer
             </motion.p>
@@ -61,7 +61,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
-              className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed"
+              className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed"
             >
               Building enterprise web applications and backend services —
               from API design to Docker and Kubernetes.
@@ -139,9 +139,9 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-            className="relative flex items-center justify-center order-first lg:order-last"
+            className="relative flex items-center justify-center"
           >
-            <div className="relative w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] lg:w-[340px] lg:h-[340px]">
+            <div className="relative w-[140px] h-[140px] sm:w-[220px] sm:h-[220px] lg:w-[340px] lg:h-[340px]">
               {/* Rotating gradient ring */}
               <motion.div
                 className="absolute -inset-3 rounded-full bg-gradient-primary opacity-70 blur-md"
